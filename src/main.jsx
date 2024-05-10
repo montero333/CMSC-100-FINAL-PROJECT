@@ -1,10 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+import './index.css';
+import Root from './pages/Root';
+import Signup from './pages/Signup'; 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Root />} />
+        <Route path="/signup" element={<Signup />} /> {/* Route for the Signup component */}
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
-)
+  document.getElementById('root')
+);
