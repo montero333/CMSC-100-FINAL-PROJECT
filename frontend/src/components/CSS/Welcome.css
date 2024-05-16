@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Stinger Wide';
+    src: url('/src/assets/stinger-wide-trial.regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Hagrid Text';
+    src: url('/src/assets/Hagrid-Text-Extrabold-Italic-trial.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/src/assets/main_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(30%);
+    z-index: -1;
+}
+
+.welcome-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.title {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 180px;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.subtitle {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 24px;
+    color: #bbd687;
+    text-align: center;
+    position: absolute;
+    top: -0px;
+    right: 400px;
+    animation: fadeInRight 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.secondary-subtitle {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    border: none;
+    position: absolute;
+    top: -50px;
+    left: 620px;
+}
+
+.button {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 24px;
+    color: #bbd687;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #bbd687;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    bottom: -180px;
+    position: absolute;
+    animation: slideInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.button:hover {
+    background-color: #bbd687;
+    color: white;
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.sign-in-text {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 15px;
+    color: #bbd687;
+    text-decoration: underline;
+    margin-top: 10px;
+    position: absolute;
+    bottom: -220px;
+    animation: slideInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.sign-in-text:hover {
+    color: white;
+}
+
+@keyframes fadeInDown {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

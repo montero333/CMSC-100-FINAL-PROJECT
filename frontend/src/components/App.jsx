@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminHome from './Admin/AdminView';
 import ManageAccount from './Admin/ManageAccount';
 import ProductListing from './Admin/ProductListing';
+import Welcome from './Welcome';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <div style={{ marginTop: '-3.5rem' }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Register />} />
+          <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
