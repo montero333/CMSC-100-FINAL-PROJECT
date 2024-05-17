@@ -1,64 +1,110 @@
-.home-container {
-  padding: 20px;
+/* General Reset for Body and HTML */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* General Container */
+.home-container {
+  padding: 20px;
+  padding-top: 80px; /* Adjust this value based on the height of your navbar */
+}
+
+/* Navbar */
+.navbar {
+  background-color: #343a40; /* Dark background */
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure navbar stays on top */
+}
+
+.navbar .navbar-brand {
+  font-weight: bold;
+  color: #007bff; 
+}
+
+.navbar .navbar-nav .nav-link {
+  color: #007bff; /* White text color */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #002b5a; /* Hover color */
+}
+
+.navbar .navbar-text {
+  color: #007bff; /* White text color */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Background color */
+  color: #ffffff; /* White text color */
+  border: none; /* No border */
+  padding: 8px 12px; /* Padding */
+  cursor: pointer; /* Pointer cursor */
+  border-radius: 3px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth color transition */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker background on hover */
+}
+
+/* Product List */
 .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
+/* Item Card */
 .item-card {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px; /* Increased padding for better spacing */
   background-color: #f9f9f9;
+  transition: box-shadow 0.3s; /* Smooth shadow transition */
+}
+
+.item-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
 }
 
 .item-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem; /* Larger font size */
+  color: #333; /* Darker text color */
+}
+
+.item-card p {
+  margin-bottom: 10px;
+  color: #555; /* Slightly lighter text color */
+}
+
+.item-card .quantity-control {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-/* Home.css */
-
-.navbar {
-  background-color: #f8f9fa; /* Light gray background */
+.item-card .quantity-control label {
+  margin-right: 10px;
 }
 
-/* Home.css */
-
-.navbar-lower {
-  margin-top: 20px; /* Adjust the value as needed */
-}
-
-
-.navbar .navbar-brand {
-  font-weight: bold;
-  color: #212529; /* Dark text color */
-}
-
-.navbar .navbar-nav .nav-link {
-  color: #212529; /* Dark text color */
-}
-
-.navbar .navbar-nav .nav-link:hover {
-  color: #007bff; /* Hover color */
-}
-
-
-
+/* Button Styles */
 .item-card button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 12px; /* Increased padding for better touch targets */
   cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s; /* Smooth color transition */
 }
 
 .item-card button:hover {
   background-color: #0056b3;
-}
-
-.btn-logout {
-  margin-top: 20px;
 }

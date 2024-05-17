@@ -1,0 +1,36 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 5rem; /* Add some space at the top */
+    padding-bottom: 2rem; /* Add some space at the bottom */
+    background-image: linear-gradient(#00d5ff, #0095ff, rgba(93, 0, 255,.555));
+  }
+  
+  .register-content {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 500px; /* Limiting the width for larger screens */
+    text-align: center; /* Move text-align to here */
+  }
+  
+  .register-title {
+    margin-bottom: 1rem;
+    color: #007bff;
+  }
+  
+  .register-input {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .register-btn {
+    margin-top: 1rem;
+  }
+  
+  .register-login {
+    margin-top: 0.5rem;
+  }
