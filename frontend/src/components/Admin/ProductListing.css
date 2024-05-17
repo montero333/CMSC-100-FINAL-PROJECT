@@ -1,0 +1,20 @@
+.product-listing {
+    padding: 20px;
+}
+
+.product-listing h1 {
+    margin-bottom: 20px;
+}
+
+.product-listing .table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.product-listing .btn {
+    margin-right: 10px;
+}
+
+.product-listing .btn-primary {
+    margin-top: 20px;
+}
