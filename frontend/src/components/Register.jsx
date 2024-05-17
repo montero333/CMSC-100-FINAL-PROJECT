@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './CSS/Register.css';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -30,24 +31,23 @@ const Register = () => {
     };
 
     return (
-        <div>
-            <div className="d-flex justify-content-center align-items-center text-center vh-100" style={{backgroundImage: "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))"}}>
-                <div className="bg-white p-3 rounded" style={{ width: '40%' }}>
-                    <h2 className='mb-3 text-primary'>Register</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3 text-start">
-                            <label htmlFor="exampleInputFirstName" className="form-label">
-                                <strong>Name</strong>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter First Name"
-                                className="form-control"
-                                id="exampleInputFirstName"
-                                onChange={(event) => setFirstName(event.target.value)}
-                                required
-                            />
-                        </div>
+        <div className="register-container">
+            <div className="register-content">
+                <h2 className='register-title'>Register</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3 text-start">
+                        <label htmlFor="exampleInputFirstName" className="form-label">
+                            <strong>Name</strong>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter First Name"
+                            className="form-control register-input"
+                            id="exampleInputFirstName"
+                            onChange={(event) => setFirstName(event.target.value)}
+                            required
+                        />
+                    </div>
                         <div className="mb-3 text-start">
                             <label htmlFor="exampleInputMiddleName" className="form-label">
                                 <strong>Middle Name (Optional)</strong>
@@ -99,12 +99,11 @@ const Register = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">Register</button>
-                    </form>
+                        <button type="submit" className="btn btn-primary register-btn">Register</button>
+                </form>
 
-                    <p className='container my-2'>Already have an account ?</p>
-                    <Link to='/login' className="btn btn-secondary">Login</Link>
-                </div>
+                <p className='container my-2 register-login'>Already have an account ?</p>
+                <Link to='/login' className="btn btn-secondary">Login</Link>
             </div>
         </div>
     );
