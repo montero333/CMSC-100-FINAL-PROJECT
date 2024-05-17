@@ -1,0 +1,274 @@
+@font-face {
+    font-family: 'Stinger Wide';
+    src: url('/src/assets/stinger-wide-trial.regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Hagrid Text';
+    src: url('/src/assets/Hagrid-Text-Extrabold-Italic-trial.ttf') format('truetype');
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.login-container {
+    width: 90vw;
+    height: 90vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Required for absolute positioning of slides */
+}
+
+.slideshow {
+    width: 90vw;
+    height: 90vh;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0; /* Set z-index to ensure slides are behind rectangle */
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.emInput {
+    position: absolute;
+    z-index: 5;
+    width: 38vw;
+    right: 100px;
+    bottom: 430px;
+}
+
+/* Style for the email input field */
+.emInput input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.pwInput {
+    position: absolute;
+    z-index: 5;
+    width: 38vw;
+    bottom: 300px;
+    right: 100px;
+}
+
+/* Style for the email input field */
+.pwInput input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style for the submit button */
+.button-submit {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 30px;
+    background-color: white; /* Set background color to white */
+    color: rgb(18, 161, 49); /* Set text color to black */
+    border: 1px solid black; /* Add border for visibility */
+    position: absolute;
+    right: 328px;
+    bottom: 150px;
+    border-radius: 500px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    cursor: pointer;
+    z-index: 5;
+    width: 12vw;
+    height: 10vh
+}
+
+.button-submit:hover {
+    background-color: #bbd687;
+    color: white;
+}
+
+.regText {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: underline;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 100px;
+    animation: slideInUp 1.5s ease-out forwards;
+    opacity: 0;
+    z-index: 5;
+}
+
+
+.rectangle {
+    width: 900px;
+    height: 90vh;
+    opacity: 90%;
+    position: absolute;
+    right: 0px;
+    background-color: #50653e;
+    z-index: 1; /* Set z-index to ensure rectangle is behind circles */
+}
+
+.circle {
+    width: 305px;
+    height: 305px;
+    left: 170px;
+    top: 350px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 3; /* Set z-index to ensure circles are in front of rectangle */
+    animation: circleAnimation 4s infinite; /* Apply animation */
+    
+}
+
+.mabuhay-text {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 50px; /* Adjust the size as needed */
+    color: #ffffff; /* Set the color */
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 4; /* Ensure text is in front of slides but behind circles */
+}
+
+.titleLI {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 150px;
+    color: white;
+    position: absolute;
+    right: 150px;
+    top: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    z-index: 4;
+    animation: fadeInFromRight 1.5s ease-out forwards;
+}
+
+.subtitleLI {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 18px;
+    color: #bbd687;
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    right: 500px;
+    animation: fadeInRight 1.5s ease-out forwards;
+    opacity: 0;
+    z-index: 4;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.secondary-subtitleLI {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 21px;
+    color: #ffffff;
+    text-align: center;
+    animation: fadeInDown 1.5s ease-out forwards;
+    position: absolute;
+    top: 240px;
+    right: 240px;
+    opacity: 0;
+    z-index: 4;
+    animation: fadeInFromRight 1.5s ease-out forwards;
+}
+
+.logoLI {
+    width: 75px;
+    height: auto;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    border: none;
+    position: absolute;
+    top: 20px;
+    left: 1490px;
+    z-index: 4;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+
+}
+
+.mascot{
+    position: absolute;
+    bottom: 20px; /* Adjust position as needed */
+    right: 1050px; /* Adjust position as needed */
+    width: 500px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 4; /* Ensure it is in front of all elements */
+    animation: fadeInFromTop 8s ease-out forwards;
+}
+
+.email-text {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px; /* Adjust the size as needed */
+    color: #ffffff; /* Set the color */
+    position: absolute;
+    top: 290px; /* Adjust position as needed */
+    left: 850px; /* Adjust position as needed */
+    z-index: 4; /* Ensure text is in front of slides but behind circles */
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.pw-text {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px; /* Adjust the size as needed */
+    color: #ffffff; /* Set the color */
+    position: absolute;
+    top: 430px; /* Adjust position as needed */
+    left: 850px; /* Adjust position as needed */
+    z-index: 4; /* Ensure text is in front of slides but behind circles */
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+
+@keyframes circleAnimation {
+    0% {
+        transform: rotate(0deg) translate(150px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translate(150px) rotate(360deg);
+    }
+}
+
+/* Fade in from top animation */
+@keyframes fadeInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in from right animation */
+@keyframes fadeInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
