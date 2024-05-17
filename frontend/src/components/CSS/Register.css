@@ -1,0 +1,67 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    background-image: linear-gradient(#00d5ff, #0095ff, rgba(93, 0, 255, 0.555));
+  }
+  
+  .register-content {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 600px;
+    margin-top: 2rem; 
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .register-title {
+    margin-bottom: 1rem;
+    color: #007bff;
+    font-size: 1.5rem; 
+  }
+  
+  .register-input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.75rem; 
+    font-size: 1rem; 
+    border: 1px solid #ccc; 
+    border-radius: 0.25rem;
+  }
+  
+  .register-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem; 
+    font-size: 1rem; 
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-btn:hover {
+    background-color: #0056b3; 
+  }
+  
+  .register-login {
+    margin-top: 0.5rem;
+    font-size: 0.875rem; 
+    color: #6c757d;
+  }
+  
+  .register-login a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .register-login a:hover {
+    text-decoration: underline; 
+  }
+  
