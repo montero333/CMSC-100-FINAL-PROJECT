@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -7,39 +7,45 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        axios.post('http://localhost:3001/login', {email, password})
-        .then(result => {
-            if(result.data.message === "Success"){
-                console.log("Login Success");
-                alert('Login successful!');
-                if (result.data.userType === "Admin") {
-                    navigate('/admin-home');
+        axios.post('http://localhost:3001/login', { email, password })
+            .then(result => {
+                if (result.data.message === "Success") {
+                    console.log("Login Success");
+                    alert('Login successful!');
+                    
+                    // Log the user data
+                    console.log("User Data:", result.data);
+                    
+                    // Set the user email in state
+                    setUserEmail(result.data.email);
+                    
+                    // Navigate to the appropriate home page based on user type
+                    if (result.data.userType === "Admin") {
+                        navigate('/admin-home');
+                    } else {
+                        navigate('/home');
+                    }
+                } else if (result.data === "Wrong password") {
+                    console.log("Incorrect password");
+                    setErrorMessage('Incorrect password! Please try again.');
+                } else if (result.data === "No user found with this email") {
+                    console.log("No user found with this email");
+                    setErrorMessage('No user found with this email');
                 } else {
-                    navigate('/home');
+                    console.log("Unexpected response from server");
+                    setErrorMessage('Unexpected response from server');
                 }
-            }
-            else if (result.data === "Wrong password") {
-                console.log("Incorrect password");
-                alert('Incorrect password! Please try again.');
-            }
-            else if (result.data === "No user found with this email") {
-                console.log("No user found with this email");
-                alert('No user found with this email');
-            }
-            else {
-                console.log("Unexpected response from server");
-                alert('Unexpected response from server');
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            alert('An error occurred. Please try again later.');
-        });
+            })
+            .catch(err => {
+                console.error(err);
+                setErrorMessage('An error occurred. Please try again later.');
+            });
     }
 
     return (
@@ -80,6 +86,7 @@ const Login = () => {
                     </form>
                     {errorMessage && <p className="text-danger my-2">{errorMessage}</p>}
                     <p className='container my-2'>Don't have an account? <Link to='/register'>Register</Link></p>
+                    {userEmail && <p className='text-success'>Welcome {userEmail}</p>}
                 </div>
             </div>
         </div>

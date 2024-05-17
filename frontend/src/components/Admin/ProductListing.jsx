@@ -13,6 +13,13 @@ const ProductListing = () => {
         productQuantity: '',
         productPrice: ''
     });
+    const [newProduct, setNewProduct] = useState({
+        productName: '',
+        productDescription: '',
+        productType: '',
+        productQuantity: '',
+        productPrice: ''
+    });
 
     useEffect(() => {
         axios.get('http://localhost:3001/products')
@@ -52,6 +59,28 @@ const ProductListing = () => {
             })
             .catch(error => {
                 console.error('Error updating product:', error);
+            });
+    };
+
+    const handleNewProductChange = (event) => {
+        const { name, value } = event.target;
+        setNewProduct({ ...newProduct, [name]: value });
+    };
+
+    const handleAddProduct = () => {
+        axios.post('http://localhost:3001/products', newProduct)
+            .then(response => {
+                setProducts([...products, response.data]);
+                setNewProduct({
+                    productName: '',
+                    productDescription: '',
+                    productType: '',
+                    productQuantity: '',
+                    productPrice: ''
+                });
+            })
+            .catch(error => {
+                console.error('Error adding product:', error);
             });
     };
 
@@ -125,6 +154,55 @@ const ProductListing = () => {
                     ))}
                 </tbody>
             </table>
+            <h2>Add New Product</h2>
+            <form className="new-product-form">
+                <div>
+                    <label>Product Name:</label>
+                    <input
+                        type="text"
+                        name="productName"
+                        value={newProduct.productName}
+                        onChange={handleNewProductChange}
+                    />
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <input
+                        type="text"
+                        name="productDescription"
+                        value={newProduct.productDescription}
+                        onChange={handleNewProductChange}
+                    />
+                </div>
+                <div>
+                    <label>Type:</label>
+                    <input
+                        type="text"
+                        name="productType"
+                        value={newProduct.productType}
+                        onChange={handleNewProductChange}
+                    />
+                </div>
+                <div>
+                    <label>Quantity:</label>
+                    <input
+                        type="number"
+                        name="productQuantity"
+                        value={newProduct.productQuantity}
+                        onChange={handleNewProductChange}
+                    />
+                </div>
+                <div>
+                    <label>Price:</label>
+                    <input
+                        type="number"
+                        name="productPrice"
+                        value={newProduct.productPrice}
+                        onChange={handleNewProductChange}
+                    />
+                </div>
+                <button type="button" className="btn btn-primary" onClick={handleAddProduct}>Add Product</button>
+            </form>
             <Link to="/admin-home" className="btn btn-primary">Back</Link>
         </div>
     );

@@ -3,9 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require('./models/FormData');
 const ProductDataModel = require('./models/ProductData');
-const OrderDataModel = require('./models/OrderData'); // Import OrderDataModel
+const OrderDataModel = require('./models/OrderData');
 const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
 const app = express();
 
 
@@ -17,45 +16,50 @@ mongoose.connect('mongodb://127.0.0.1:27017/CMSC100', {
     useUnifiedTopology: true
 });
 
+const addToCartRoute = require('./routers/addToCart'); // Ensure correct path to your route file
 
-// FINISHED REGISTER
+
+
+// REGISTER
 app.post('/register', async (req, res) => {
     const { firstName, middleName, lastName, email, password } = req.body;
+
+    // Validate input fields
+    if (!firstName || !lastName || !email || !password) {
+        return res.status(400).json({ error: "All fields are required" });
+    }
 
     try {
         // Check if the email is already registered
         const existingUser = await FormDataModel.findOne({ email });
 
         if (existingUser) {
+            console.log('Email already registered:', email);
             return res.status(400).json({ error: "Email already registered" });
         }
 
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Generate userId
-        const userId = uuidv4();
-
-        // Create new user with generated userId and hashed password
-        const newUser = await FormDataModel.create({
+        // Create new user (userId and password hashing are handled in the schema)
+        const newUser = new FormDataModel({
             firstName,
             middleName,
             lastName,
             email,
-            password: hashedPassword,
-            userId
+            password,
+            userCart: [] // Initialize the cart as an empty array
         });
 
+        // Save the new user to the database
+        await newUser.save();
+
+        // Return the newly created user
         res.status(201).json(newUser);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Failed to register user' });
     }
 });
 
 // FINISHED LOGIN
-// Backend code (index.js or your main server file)
-
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -67,7 +71,14 @@ app.post('/login', (req, res) => {
                         console.error("Error:", err);
                         res.status(500).json("Internal Server Error");
                     } else if (result) {
-                        res.json({ message: "Success", userType: user.userType });
+                        // Return userId, email, userType, and userCart on successful login
+                        res.json({ 
+                            message: "Success", 
+                            userId: user.userId,
+                            email: user.email,
+                            userType: user.userType,
+                            userCart: user.userCart 
+                        });
                     } else {
                         res.json("Wrong password");
                     }
@@ -82,6 +93,8 @@ app.post('/login', (req, res) => {
         });
 });
 
+
+
 // RETRIEVE USERS
 app.get('/users', async (req, res) => {
     try {
@@ -94,8 +107,30 @@ app.get('/users', async (req, res) => {
 });
 
 
-// TO DO: ADD PRODUCTS
+// Add New Product
+app.post('/products', async (req, res) => {
+    const { productName, productDescription, productType, productQuantity, productPrice } = req.body;
 
+    if (!productName || !productDescription || !productType || !productQuantity || !productPrice) {
+        return res.status(400).json({ error: "All fields are required" });
+    }
+
+    try {
+        const newProduct = new ProductDataModel({
+            productName,
+            productDescription,
+            productType,
+            productQuantity,
+            productPrice
+        });
+
+        await newProduct.save();
+        res.status(201).json(newProduct);
+    } catch (error) {
+        console.error('Error adding product:', error);
+        res.status(500).json({ error: 'Failed to add product' });
+    }
+});
 
 
 // TO DO: UPDATE PRODUCTS
@@ -134,39 +169,28 @@ app.get('/products', async (req, res) => {
     }
 });
 
-
-// TO DO: ADD TRANSACTION (ADD TO CART)
-app.post('/cart', async (req, res) => {
-    const { userId, productId, quantity } = req.body;
-
+// FIND USER BY EMAIL
+app.get('/user/:email', async (req, res) => {
     try {
-        // Find the product by productId to get its details
-        const product = await ProductDataModel.findById(productId);
+        const { email } = req.params;
 
-        if (!product) {
-            return res.status(404).json({ error: 'Product not found' });
+        // Find the user by email in the User collection of the CMSC100 database
+        const user = await FormDataModel.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
         }
 
-        // Calculate total price
-        const totalPrice = product.productPrice * quantity;
-
-        // Create a new transaction/order
-        const newTransaction = await TransactionModel.create({
-            transactionId: uuidv4(),
-            products: [{ productID: productId, quantity, productPrice: product.productPrice }],
-            status: 0, // Assuming status is pending
-            totalPrice,
-            email: userId, // Assuming userId is the email of the user
-            date: new Date().toISOString().slice(0, 10), // Current date
-            time: new Date().toLocaleTimeString() // Current time
-        });
-
-        res.status(201).json(newTransaction);
+        // Send the user data as response
+        res.json(user);
     } catch (error) {
-        console.error('Error adding to cart:', error);
+        console.error('Error fetching user:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+
 
 
 

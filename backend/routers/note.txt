@@ -1,0 +1,2 @@
+create a save function for the add to cart function that when it is pressed
+it saves all the items in the cart in the database
