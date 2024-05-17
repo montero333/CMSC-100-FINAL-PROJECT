@@ -1,67 +1,119 @@
-// Home.jsx
-
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 import './CSS/Home.css';
+import products from './products';
+import { useCart } from './CartContext';
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
+  const [quantities, setQuantities] = useState({});
+  const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail') || '');
+  const [cartMessage, setCartMessage] = useState('');
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
 
-    // FETCHING PRODUCTS
-    useEffect(() => {
-        axios.get('http://localhost:3001/products')
-            .then(response => {
-                setProducts(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching products:', error);
-            });
-    }, []);
+  useEffect(() => {
+    const initialQuantities = products.reduce((acc, product) => {
+      acc[product.id] = 1;
+      return acc;
+    }, {});
+    setQuantities(initialQuantities);
+  }, []);
 
+  const handleQuantityChange = (productId, quantity) => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [productId]: quantity,
+    }));
+  };
 
-    // ADD TO CART FUNCTION
-    const handleAddToCart = (productName) => {
-        // Add logic here to add the product to the cart
-        console.log(`Product added to cart: ${productName}`);
-    };
+  const handleAddToCart = (productId, productName) => {
+    const userId = userEmail;
+    if (!userId) {
+      console.error('No user logged in');
+      return;
+    }
 
-    return (
-        <div className="home-container">
-            <nav className="navbar navbar-lower navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="/home">Home</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/manage-cart">Manage Shopping Cart</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/manage-orders">Manage Orders</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <h1>Products</h1>
-            <div className="product-list">
-                {products.map(product => (
-                    <div key={product.productName} className="item-card">
-                        <h2>{product.productName}</h2>
-                        <p>Description: {product.productDescription}</p>
-                        <p>Type: {product.productType}</p>
-                        <p>Quantity: {product.productQuantity}</p>
-                        <p>Price: {product.productPrice}</p>
-                        <button onClick={() => handleAddToCart(product.productName)}>Add to Cart</button>
-                    </div>
-                ))}
-            </div>
-            <Link to='/login' className="btn btn-light my-5">Logout</Link>
+    try {
+      const product = products.find(p => p.id === productId);
+      const quantity = quantities[productId];
+      addToCart(product, quantity);
+      setCartMessage(`Product "${productName}" added to cart`);
+      fetch('http://localhost:3001/manage-cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userID: userId,
+          products: [{ productID: productId, productName: productName, quantity: quantity }]
+        }),
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error adding item to cart:', error));
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+      setCartMessage(`Failed to add product "${productName}" to cart`);
+    }
+  };
+  
+
+  return (
+    <div className="home-container">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <button className="navbar-brand" onClick={() => navigate("/home")}>Home</button>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <button className="nav-link btn btn-link" onClick={() => navigate("/manage-cart")}>
+                  Manage Shopping Cart
+                </button>
+              </li>
+              <li className="nav-item">
+                <button className="nav-link btn btn-link" onClick={() => navigate("/manage-orders")}>
+                  Manage Orders
+                </button>
+              </li>
+            </ul>
+            <span className="navbar-text">Logged in as: {userEmail}</span>
+            <button className="btn btn-outline-danger ms-3" onClick={() => { localStorage.removeItem('userEmail'); setUserEmail(''); navigate('/login'); }}>Logout</button>
+          </div>
         </div>
-    );
-}
+      </nav>
+      <h1>Products</h1>
+      <div className="product-list">
+        {products.map(product => (
+          <div key={product.id} className="item-card">
+            <h2>{product.name}</h2>
+            <img src={product.image} alt={product.name} style={{ width: '100px', height: '100px' }} />
+            <p>Price: ${product.price}</p>
+
+            <p>Description: {product.description}</p>
+            <p>Type: {product.type}</p>
+
+            <div className="quantity-control">
+              <label>Quantity:</label>
+              <input
+                type="number"
+                value={quantities[product.id]}
+                min="1"
+                onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value))}
+              />
+            </div>
+
+            <button onClick={() => handleAddToCart(product.id, product.name)}>Add to Cart</button>
+          </div>
+        ))}
+      </div>
+
+      {cartMessage && <p>{cartMessage}</p>}
+    </div>
+  );
+};
 
 export default Home;
