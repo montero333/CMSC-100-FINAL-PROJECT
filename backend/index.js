@@ -54,8 +54,7 @@ app.post('/register', async (req, res) => {
 });
 
 // FINISHED LOGIN
-// Backend code (index.js or your main server file)
-
+// Modify your login function to store the email
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -67,7 +66,8 @@ app.post('/login', (req, res) => {
                         console.error("Error:", err);
                         res.status(500).json("Internal Server Error");
                     } else if (result) {
-                        res.json({ message: "Success", userType: user.userType });
+                        // Store user email in localStorage on successful login
+                        res.json({ message: "Success", userType: user.userType, email: user.email });
                     } else {
                         res.json("Wrong password");
                     }
@@ -81,6 +81,7 @@ app.post('/login', (req, res) => {
             res.status(500).json("Internal Server Error");
         });
 });
+
 
 // RETRIEVE USERS
 app.get('/users', async (req, res) => {
@@ -136,38 +137,55 @@ app.get('/products', async (req, res) => {
 
 
 // TO DO: ADD TRANSACTION (ADD TO CART)
-app.post('/cart', async (req, res) => {
-    const { userId, productId, quantity } = req.body;
+app.post('/manage-cart', async (req, res) => {
+    const { userID, products } = req.body;
 
     try {
-        // Find the product by productId to get its details
-        const product = await ProductDataModel.findById(productId);
+        // Fetch product details (type and description) from the database based on productID
+        const updatedProducts = await Promise.all(products.map(async (product) => {
+            const productDetails = await ProductDataModel.findById(product.productID);
+            return {
+                ...product,
+                type: productDetails.type,
+                description: productDetails.description
+            };
+        }));
 
-        if (!product) {
-            return res.status(404).json({ error: 'Product not found' });
-        }
-
-        // Calculate total price
-        const totalPrice = product.productPrice * quantity;
-
-        // Create a new transaction/order
-        const newTransaction = await TransactionModel.create({
-            transactionId: uuidv4(),
-            products: [{ productID: productId, quantity, productPrice: product.productPrice }],
-            status: 0, // Assuming status is pending
-            totalPrice,
-            email: userId, // Assuming userId is the email of the user
-            date: new Date().toISOString().slice(0, 10), // Current date
-            time: new Date().toLocaleTimeString() // Current time
+        // Create a new cart document in the database
+        const newCart = await CartModel.create({
+            userID,
+            products: updatedProducts
         });
 
-        res.status(201).json(newTransaction);
+        res.status(201).json(newCart);
     } catch (error) {
-        console.error('Error adding to cart:', error);
+        console.error('Error adding cart items:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
+
+
+// ADD TRANSACTION (ADD TO CART)
+app.post('/transactions', async (req, res) => {
+    const { products, email, totalPrice, date, time } = req.body;
+
+    try {
+        // Create new transaction
+        const newTransaction = await OrderDataModel.create({
+            products,
+            email,
+            totalPrice,
+            date,
+            time
+        });
+
+        res.status(201).json(newTransaction);
+    } catch (error) {
+        console.error('Error adding transaction:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 
 app.listen(3001, () => {
