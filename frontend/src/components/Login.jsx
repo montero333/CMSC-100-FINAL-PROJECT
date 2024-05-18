@@ -70,12 +70,10 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <div className="rectangle"></div>
             <div className="slideshow">
                 <img src="/src/assets/s1.jpg" alt="Slide 1" className="slide" />
                 <img src="/src/assets/s2.jpg" alt="Slide 2" className="slide" />
                 <img src="/src/assets/s3.jpg" alt="Slide 3" className="slide" />
-                
             </div>
         <img src="/src/assets/logo.png" alt="LogoLI" className="logoLI" />
         <h1 className="titleLI">Alay-ay</h1>

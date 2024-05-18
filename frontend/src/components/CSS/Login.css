@@ -8,7 +8,6 @@
     src: url('/src/assets/Hagrid-Text-Extrabold-Italic-trial.ttf') format('truetype');
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -40,19 +39,44 @@ body {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    filter: brightness(30%)
 }
 
 .slide.active {
     opacity: 1;
 }
 
+.email-text {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px; /* Adjust the size as needed */
+    color: #ffffff; /* Set the color */
+    position: absolute;
+    top: 290px; /* Adjust position as needed */
+    left: 850px; /* Adjust position as needed */
+    z-index: 4; /* Ensure text is in front of slides but behind circles */
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.pw-text {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px; /* Adjust the size as needed */
+    color: #ffffff; /* Set the color */
+    position: absolute;
+    top: 430px; /* Adjust position as needed */
+    left: 850px; /* Adjust position as needed */
+    z-index: 4; /* Ensure text is in front of slides but behind circles */
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
 .emInput {
     position: absolute;
     z-index: 5;
     width: 38vw;
-    right: 100px;
-    bottom: 430px;
+    left: 850px; /* Align left position with email-text */
+    top: calc(290px + 50px); /* 50px below email-text */
+    animation: fadeInFromTop 1.5s ease-out forwards;
+
 }
 
 /* Style for the email input field */
@@ -68,11 +92,13 @@ body {
     position: absolute;
     z-index: 5;
     width: 38vw;
-    bottom: 300px;
-    right: 100px;
+    left: 850px; /* Align left position with pw-text */
+    top: calc(430px + 50px); /* 50px below pw-text */
+    animation: fadeInFromTop 1.5s ease-out forwards;
+
 }
 
-/* Style for the email input field */
+/* Style for the password input field */
 .pwInput input {
     width: 100%;
     padding: 10px;
@@ -97,7 +123,9 @@ body {
     cursor: pointer;
     z-index: 5;
     width: 12vw;
-    height: 10vh
+    height: 10vh;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+
 }
 
 .button-submit:hover {
@@ -118,17 +146,6 @@ body {
     z-index: 5;
 }
 
-
-.rectangle {
-    width: 900px;
-    height: 90vh;
-    opacity: 90%;
-    position: absolute;
-    right: 0px;
-    background-color: #50653e;
-    z-index: 1; /* Set z-index to ensure rectangle is behind circles */
-}
-
 .circle {
     width: 305px;
     height: 305px;
@@ -138,7 +155,6 @@ body {
     position: absolute;
     z-index: 3; /* Set z-index to ensure circles are in front of rectangle */
     animation: circleAnimation 4s infinite; /* Apply animation */
-    
 }
 
 .mabuhay-text {
@@ -204,41 +220,17 @@ body {
     left: 1490px;
     z-index: 4;
     animation: fadeInFromTop 1.5s ease-out forwards;
-
 }
 
-.mascot{
+.mascot {
     position: absolute;
     bottom: 20px; /* Adjust position as needed */
     right: 1050px; /* Adjust position as needed */
     width: 500px; /* Adjust size as needed */
     height: auto; /* Maintain aspect ratio */
     z-index: 4; /* Ensure it is in front of all elements */
-    animation: fadeInFromTop 8s ease-out forwards;
+    animation: fadeInFromTop 4.8s ease-out forwards;
 }
-
-.email-text {
-    font-family: 'Hagrid Text', sans-serif;
-    font-size: 28px; /* Adjust the size as needed */
-    color: #ffffff; /* Set the color */
-    position: absolute;
-    top: 290px; /* Adjust position as needed */
-    left: 850px; /* Adjust position as needed */
-    z-index: 4; /* Ensure text is in front of slides but behind circles */
-    animation: fadeInFromTop 1.5s ease-out forwards;
-}
-
-.pw-text {
-    font-family: 'Hagrid Text', sans-serif;
-    font-size: 28px; /* Adjust the size as needed */
-    color: #ffffff; /* Set the color */
-    position: absolute;
-    top: 430px; /* Adjust position as needed */
-    left: 850px; /* Adjust position as needed */
-    z-index: 4; /* Ensure text is in front of slides but behind circles */
-    animation: fadeInFromTop 1.5s ease-out forwards;
-}
-
 
 @keyframes circleAnimation {
     0% {

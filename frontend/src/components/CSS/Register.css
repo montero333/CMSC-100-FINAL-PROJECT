@@ -1,0 +1,322 @@
+@font-face {
+    font-family: 'Stinger Wide';
+    src: url('/src/assets/stinger-wide-trial.regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Hagrid Text';
+    src: url('/src/assets/Hagrid-Text-Extrabold-Italic-trial.ttf') format('truetype');
+}
+
+.regTitle {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 81px;
+    color: white;
+    position: absolute;
+    right: 1200px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.regTitle2 {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 151px;
+    color: rgb(49, 221, 19);
+    position: absolute;
+    right: 1210px;
+    top: 85px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards, colorChange 5s infinite; /* Added colorChange animation */
+    opacity: 0;
+    white-space: nowrap;
+}
+
+
+
+.regTitle3 {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 81px;
+    color: white;
+    position: absolute;
+    right: 1380px;
+    top: 260px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.quote {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 30px;
+    color: rgb(49, 221, 19);
+    position: absolute;
+    right: 1295px;
+    top: 360px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formTitle {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 81px;
+    color: white;
+    position: absolute;
+    right: 300px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formName1 {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    right: 700px;
+    top: 175px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formName2 {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    right: 375px;
+    top: 175px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formName2-sub {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 15px;
+    color: white;
+    position: absolute;
+    right: 435px;
+    top: 215px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formName3 {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    right: 100px;
+    top: 175px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formName4 {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    right: 650px;
+    top: 400px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.formName5 {
+    font-family: 'Hagrid Text', sans-serif;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    right:575px;
+    top: 600px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.fname{
+    position: absolute;
+    z-index: 5;
+    width: 12vw;
+    left: 60px; 
+    top: 245px;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.mname{
+    position: absolute;
+    z-index: 5;
+    width: 12vw;
+    left: 350px; 
+    top: 245px;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.lname{
+    position: absolute;
+    z-index: 5;
+    width: 12vw;
+    left: 660px; 
+    top: 245px;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.submitReg {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 30px;
+    background-color: white; /* Set background color to white */
+    color: rgb(18, 161, 49); /* Set text color to black */
+    border: 1px solid black; /* Add border for visibility */
+    position: absolute;
+    left: 350px;
+    bottom: 75px;
+    border-radius: 500px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 5;
+    width: 12vw;
+    height: 10vh;
+}
+
+.email{
+    position: absolute;
+    z-index: 5;
+    width: 30vw;
+    left: 185px; 
+    top: 450px;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.password{
+    position: absolute;
+    z-index: 5;
+    width: 30vw;
+    left: 185px; 
+    top: 650px;
+    animation: fadeInFromTop 1.5s ease-out forwards;
+}
+
+.register-form {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+
+}
+
+.rectangle {
+    padding: 2rem;
+    width: 50%; 
+    height: 95vh; 
+    background-color: #50653e; 
+    opacity: 80%;
+    position: absolute;
+    left: 850px;
+    top: 20px;
+    border-radius: 10rem; /* Rounded corners */
+
+}
+
+.register-content {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    z-index: 5;
+    display: flex; 
+} 
+
+.register-content {
+    position:-webkit-sticky;
+    padding: 0cqmax;
+    padding-top:01lh;
+}
+
+.register-content video {
+    width: 120vw;
+    height: 110vh;
+    bottom: 30px;
+    border-radius: 0.5rem;
+    filter: brightness(40%);
+    pointer-events: none; /* Disable pointer events */
+    user-select: none; /* Prevent selection */
+    touch-action: none;
+}
+
+
+.register-title {
+    font-family: 'Stinger Wide', sans-serif;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+register-input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+} 
+
+.register-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #0056b3;
+}
+
+.register-login {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.register-login a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-login a:hover {
+    text-decoration: underline;
+} */
+
+.video-container {
+    width: 50%;
+    height: auto;
+    margin-left: 2rem;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+@keyframes colorChange {
+    0% { color: rgb(122, 207, 107); }
+    25% { color: rgb(79, 255, 48); } /* Red */
+    50% { color: rgb(131, 166, 130); } /* Blue */
+    75% { color: rgb(3, 224, 95); } /* Yellow */
+    100% { color: rgb(49, 221, 19); } /* Original color */
+}

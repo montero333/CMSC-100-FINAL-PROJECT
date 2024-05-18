@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import './CSS/Register.css';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -29,29 +29,40 @@ const Register = () => {
             .catch(err => console.log(err));
     };
 
+    
+
     return (
-        <div>
-            <div className="d-flex justify-content-center align-items-center text-center vh-100" style={{backgroundImage: "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))"}}>
-                <div className="bg-white p-3 rounded" style={{ width: '40%' }}>
-                    <h2 className='mb-3 text-primary'>Register</h2>
+        <div className="register-content">
+            <video autoPlay loop className="video">
+                <source src="/src/assets/regVid.mp4" type="video/mp4" />
+            </video>
+            
+            <div className="register-form">
+                <div className="rectangle">
+                    <h2 className="regTitle">Support Our</h2>
+                    <h2 className="regTitle2">LOCAL</h2>
+                    <h2 className="regTitle3">Farmers</h2>
+                    <h3 className="quote">"By making the right choice"</h3>
+                    <h3 className="formTitle">SIGN UP</h3>
+                    <h3 className="formName1">First Name</h3>
+                    <h3 className="formName2">Middle Name</h3>
+                    <h3 className="formName3">Last Name</h3>
+                    <h3 className="formName2-sub">(OPTIONAL)</h3>
+                    <h3 className="formName4">EMAIL</h3>
+                    <h3 className="formName5">PASSWORD</h3>
+
                     <form onSubmit={handleSubmit}>
-                        <div className="mb-3 text-start">
-                            <label htmlFor="exampleInputFirstName" className="form-label">
-                                <strong>Name</strong>
-                            </label>
+                    <div className="fname">
                             <input
                                 type="text"
                                 placeholder="Enter First Name"
-                                className="form-control"
+                                className="form-control register-input"
                                 id="exampleInputFirstName"
                                 onChange={(event) => setFirstName(event.target.value)}
                                 required
                             />
                         </div>
-                        <div className="mb-3 text-start">
-                            <label htmlFor="exampleInputMiddleName" className="form-label">
-                                <strong>Middle Name (Optional)</strong>
-                            </label>
+                        <div className="mname">
                             <input
                                 type="text"
                                 placeholder="Enter Middle Name"
@@ -60,10 +71,7 @@ const Register = () => {
                                 onChange={(event) => setMiddleName(event.target.value)}
                             />
                         </div>
-                        <div className="mb-3 text-start">
-                            <label htmlFor="exampleInputLastName" className="form-label">
-                                <strong>Last Name</strong>
-                            </label>
+                        <div className="lname">
                             <input
                                 type="text"
                                 placeholder="Enter Last Name"
@@ -73,10 +81,7 @@ const Register = () => {
                                 required
                             />
                         </div>
-                        <div className="mb-3 text-start">
-                            <label htmlFor="exampleInputEmail" className="form-label">
-                                <strong>Email Id</strong>
-                            </label>
+                        <div className="email">
                             <input
                                 type="email"
                                 placeholder="Enter Email"
@@ -86,10 +91,7 @@ const Register = () => {
                                 required
                             />
                         </div>
-                        <div className="mb-3 text-start">
-                            <label htmlFor="exampleInputPassword" className="form-label">
-                                <strong>Password</strong>
-                            </label>
+                        <div className="password">
                             <input
                                 type="password"
                                 placeholder="Enter Password"
@@ -99,11 +101,8 @@ const Register = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">Register</button>
+                        <button type="submit" className="submitReg">Register</button>
                     </form>
-
-                    <p className='container my-2'>Already have an account ?</p>
-                    <Link to='/login' className="btn btn-secondary">Login</Link>
                 </div>
             </div>
         </div>
