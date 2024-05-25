@@ -1,0 +1,58 @@
+.admin-dashboard {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .admin-dashboard .navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-dashboard .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .admin-dashboard .nav-link {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #4caf50;
+  }
+  
+  .admin-dashboard .nav-link:hover {
+    color: #3e8e41;
+  }
+  
+  .admin-dashboard .card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .admin-dashboard .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-dashboard .card-body {
+    padding: 20px;
+  }
+  
+  .admin-dashboard .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .admin-dashboard .card-text {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .admin-dashboard .card-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  
+  .admin-dashboard .card-text h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0;
+  }

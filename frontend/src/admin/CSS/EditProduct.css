@@ -1,0 +1,43 @@
+.edit-product-modal {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .edit-product-modal .modal-header {
+    background-color: #4CAF50;
+    border-bottom: none;
+  }
+  
+  .edit-product-modal .modal-header .btn-close {
+    color: white;
+    opacity: 0.5;
+  }
+  
+  .edit-product-modal .modal-header .btn-close:hover {
+    opacity: 0.7;
+  }
+  
+  .edit-product-modal .modal-title {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .edit-product-modal .modal-body {
+    padding: 20px;
+  }
+  
+  .edit-product-modal .form-control {
+    font-size: 0.875rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .edit-product-modal .btn-success {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    font-weight: bold;
+  }
+  
+  .edit-product-modal .btn-success:hover {
+    background-color: #3e8e41;
+    border-color: #3e8e41;
+  }
