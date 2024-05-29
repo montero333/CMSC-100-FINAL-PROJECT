@@ -39,24 +39,12 @@ const SignIn = () => {
     <div
       className="imageOverlay bg-dark"
       style={{
-        minHeight: '100vh',
-        background: 'rgba(0, 0, 0, 0.5) url("https://drive.google.com/uc?export=view&id=1bCuneSrA0EnKB3IoJH2xF5HYDyKmnCc-") no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
       <Container className="mt-5" style={{ width: '500px', backgroundColor: '#f8f9fa', padding: '40px', borderRadius: '8px' }}>
-        <NavLink to="/">
-          <img
-            src="https://drive.google.com/uc?export=view&id=1gs1z03yaEQFWLcKqtapLtDBB7EPpshwt"
-            alt="Your Logo"
-            height="50"
-            className="d-block mx-auto mb-4"
-          />
-        </NavLink>
         <h4 className="text-center mb-4 dark-text">Sign In as Admin or Customer</h4>
         <Form onSubmit={handleSignIn}>
           <Form.Group controlId="formBasicEmail">

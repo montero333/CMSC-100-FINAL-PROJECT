@@ -71,14 +71,7 @@ const SignUp = () => {
       }}
       >
     <Container className="mt-5" style={{ width: '500px', backgroundColor: '#f8f9fa', padding: '40px', borderRadius: '8px'}}>
-      <NavLink to="/">
-      <img
-        src="https://drive.google.com/uc?export=view&id=1gs1z03yaEQFWLcKqtapLtDBB7EPpshwt"
-        alt="Your Logo"
-        height="50"
-        className="d-block mx-auto mb-4"
-      />
-      </ NavLink>
+
       <h3 className="text-center mb-4">Create an Account</h3>
       <Form>
         <Form.Group controlId="formBasicFirstName">

@@ -1,4 +1,3 @@
-// src/components/Home.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +7,7 @@ const Home = () => {
       <h1>Welcome to our Application</h1>
       <p>This is the home page.</p>
       <Link to="/signin">
-        <button style={{ padding: '10px 20px', fontSize: '16px', marginTop: '20px' }}>Start Shopping</button>
+        <button style={{ padding: '10px 20px', fontSize: '16px', marginTop: '20px', marginRight: '10px' }}>Start Shopping</button>
       </Link>
     </div>
   );

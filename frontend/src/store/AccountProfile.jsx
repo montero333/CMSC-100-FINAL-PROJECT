@@ -151,7 +151,7 @@ const AccountProfile = () => {
 
   //fetch product information from the database
   useEffect(() => {
-    const fetchProductInfoForTransactions = async () => {
+    const fetchTransactionProductInfo = async () => {
       try {
         const productInfoPromises = transactions.map(async (transaction) => {
           const productInfoArray = await Promise.all(
@@ -188,7 +188,7 @@ const AccountProfile = () => {
       }
     };
   
-    fetchProductInfoForTransactions();
+    fetchTransactionProductInfo();
   }, [transactions]);
   
   //group transactions
@@ -207,7 +207,6 @@ const AccountProfile = () => {
         <div className="card p-2">
           <div className="card-body">
           <h2 className="card-title" style={{ color: '#4CAF50', fontWeight: 'bold' }}>
-            <PersonCircle size={50} color="#757575" style={{marginRight: '20px'}}/>
                Hi, {userData && `${userData.firstName} ${userData.lastName}!`}
             </h2>
             {userData ? (
@@ -281,11 +280,9 @@ const AccountProfile = () => {
                 {/* Save Changes Button */}
                 {(editUsername || editPassword) && (
                   <button onClick={handleSaveChanges} className="btn mt-3" style={{backgroundColor: '#4CAF50', color: 'white'}}>
-                    <FontAwesomeIcon icon={faSave} style={{marginRight: '10px'}} color="white" />
                     Save Changes
                   </button>
                 )}
-                {error && <Alert variant="danger" className="error-alert">{error}</Alert>} 
               </div>
             ) : (
               <p>Loading user data...</p>
@@ -361,8 +358,6 @@ const AccountProfile = () => {
         </div>
       
       </div>
-      <NewsletterSubscription />
-      <StoreFooter />
     </>
   );
 };

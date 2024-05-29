@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/Project100', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1:27017/CMSC100', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Define a Mongoose model for product data
 const ProductModel = mongoose.model('Product', {
@@ -133,6 +133,7 @@ app.post('/api/signin', async (req, res) => {
         { UserName: email }
       ]
     });
+
     console.log(user)
     if (!user) {
       return res.status(401).json({ message: 'User not found' });
@@ -144,11 +145,11 @@ app.post('/api/signin', async (req, res) => {
       return res.status(401).json({ message: 'Incorrect password' });
     }
 
-    // Checks if the account is admin or customer
-    if ((user.email === 'admin1@admin.uplb' || user.UserName === 'admin') && user.password === 'admin') {
+    // Check the UserType to determine the redirect path
+    if (user.UserType === 'Admin') {
       return res.status(200).json({ message: 'Sign-in successful', redirectTo: '/admin-dashboard' });
     } else {
-      return res.status(200).json({ message: 'Sign-in successful', redirectTo: '/store' , userId: user.userId});
+      return res.status(200).json({ message: 'Sign-in successful', redirectTo: '/store', userId: user.userId });
     }
   } catch (error) {
     console.error('Error during sign-in:', error);

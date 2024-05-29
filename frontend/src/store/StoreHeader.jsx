@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Navbar, Container, Dropdown } from 'react-bootstrap';
+import { Navbar, Container, Dropdown, Button } from 'react-bootstrap';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import CartDisplay from './CartDisplay';
+import CartDisplay from './CartDisplay.jsx';
 
 const StoreHeader = ({ cart, setCart, handleCheckout, removeFromCart }) => {
   const [isCartVisible, setCartVisible] = useState(false);
@@ -9,7 +9,7 @@ const StoreHeader = ({ cart, setCart, handleCheckout, removeFromCart }) => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    navigate('/logout');
+    navigate('/signin');
   };
 
   const handleCartClick = () => {
@@ -20,23 +20,21 @@ const StoreHeader = ({ cart, setCart, handleCheckout, removeFromCart }) => {
     <>
       <Navbar bg="light" expand="lg" className="sticky-top custom-navbar">
         <Container>
-          {/* Navbar Brand */}
-          <Navbar.Brand as={Link} to="/store">Your Store</Navbar.Brand>
-
-          {/* Navbar Links */}
+          <Navbar.Brand as={Link} to="/store">Store</Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-            {/* Shopping Cart Icon */}
-            <div
-              className="custom-nav-link text-success position-relative"
-              style={{ marginRight: '40px', color: '#4CAF50', cursor: 'pointer' }}
+            {/* Shopping Cart Button */}
+            <Button
+              variant="outline-success"
+              className="position-relative"
+              style={{ marginRight: '40px' }}
               onClick={handleCartClick}
             >
-              <i className="fas fa-shopping-cart" style={{ color: '#4CAF50' }}></i>
-              {/* Render CartDisplay component */}
-              {isCartVisible && (
-                <CartDisplay cart={cart} setCart={setCart} handleCheckout={handleCheckout} removeFromCart={removeFromCart} isVisible={isCartVisible} />
-              )}
-            </div>
+              Cart ({cart.length})
+            </Button>
+            {/* Render CartDisplay component */}
+            {isCartVisible && (
+              <CartDisplay cart={cart} setCart={setCart} handleCheckout={handleCheckout} removeFromCart={removeFromCart} isVisible={isCartVisible} />
+            )}
 
             {/* Account Dropdown */}
             <Dropdown>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 
-const CartDisplay = ({ cart, setCart, handleCheckout, removeFromCart, isVisible }) => {
+const CartDisplay = ({ cart, setCart, handleCheckout, removeFromCart, isVisible  }) => {
   const handleQuantityChange = (event, productId, change) => {
-    event.stopPropagation();
+    event.stopPropagation(); 
     const updatedCart = cart.map(item => {
       if (item._id === productId) {
         const newDisplayedQuantity = Math.max(0, item.displayedQuantity + change);
@@ -12,12 +12,14 @@ const CartDisplay = ({ cart, setCart, handleCheckout, removeFromCart, isVisible 
       return item;
     });
 
+    // Remove items with quantity 0 or less from the cart
     const filteredCart = updatedCart.filter(item => item.displayedQuantity > 0);
     setCart(filteredCart);
   };
 
   const handleDelete = (event, productId) => {
-    event.stopPropagation();
+    event.stopPropagation(); 
+    // Filter out the item with the specified productId
     removeFromCart(productId);
   };
 
@@ -41,14 +43,14 @@ const CartDisplay = ({ cart, setCart, handleCheckout, removeFromCart, isVisible 
             <Col md={2}>Qty: {item.displayedQuantity}</Col>
             <Col md={2} className="d-flex justify-content-between align-items-center">
               <div>
-                <Button variant="outline-gray" size="sm" onClick={(e) => handleQuantityChange(e, item._id, -1)}>
+                <Button variant="outline-gray" size="sm" onClick={(e) => handleQuantityChange(e,item._id, -1)}>
                   -
                 </Button>
                 <Button
                   variant="outline-gray"
                   size="sm"
                   className="mx-1"
-                  onClick={(e) => handleQuantityChange(e, item._id, 1)}
+                  onClick={(e) => handleQuantityChange(e,item._id, 1)}
                   disabled={item.displayedQuantity === item.quantity}
                 >
                   +
@@ -59,7 +61,7 @@ const CartDisplay = ({ cart, setCart, handleCheckout, removeFromCart, isVisible 
               ₱{(item.price * item.displayedQuantity).toFixed(2)}
             </Col>
             <Col md={1} className="text-center">
-              <Button variant="outline-danger" size="sm" onClick={(e) => handleDelete(e, item._id)}>
+              <Button variant="outline-danger" size="sm" onClick={(e) => handleDelete(e,item._id)}>
                 Delete
               </Button>
             </Col>

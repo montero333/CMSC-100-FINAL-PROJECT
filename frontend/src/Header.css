@@ -1,0 +1,119 @@
+/* Header.css */
+header {
+    background-color: #8D6E63;
+    padding: 10px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+  }
+  
+  .custom-nav-link {
+    margin-right: 15px; /* Adjust the margin as needed */
+  }
+
+  /* AdminHeader.css */
+.nav-link.active {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #28a745;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom right;
+  transform: scale(0, 1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link.active:hover::after {
+  transform-origin: bottom left;
+  transform: scale(1, 1);
+}
+
+.custom-nav-link.active {
+  text-decoration: underline;
+  font-weight: bold; 
+  color: #007bff; 
+}
+
+.nav-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid #28a745; 
+  padding-bottom: 2px; 
+}
+
+.custom-navbar {
+  border-bottom: 1px solid #ddd; 
+}
+
+.custom-nav-link {
+  margin-right: 35px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: 'Montserrat';
+  position: relative; 
+}
+
+.custom-nav-link:hover {
+  text-decoration: none; 
+}
+
+.custom-nav-link:hover::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px; 
+  background-color: #4CAF50; 
+  bottom: -5px; 
+  animation: underlineAnimation 0.3s ease-in-out; 
+}
+
+@keyframes underlineAnimation {
+  from {
+    transform: scaleX(0); /* Start with no width */
+  }
+  to {
+    transform: scaleX(1); /* Expand to full width */
+  }
+}
+
+.custom-dropdown-toggle {
+  color: #5c5f5c !important;
+  border-color: #bcbbbb !important;
+}
+
+.custom-dropdown-item {
+  color: #5c5f5c !important;
+}
+
+/* Remove hover effect */
+.custom-dropdown-toggle:hover,
+.custom-dropdown-item:hover {
+  background-color: #ddd !important;
+  color: #5c5f5c !important;
+}
+
