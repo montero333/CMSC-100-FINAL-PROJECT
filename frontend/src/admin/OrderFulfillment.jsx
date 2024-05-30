@@ -4,11 +4,16 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const OrderFulfillment = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [productInfo, setProductInfo] = useState({});
-  const [activeTab, setActiveTab] = useState('pending');
-  const navigate = useNavigate()
 
+ // State to store transaction data
+ const [transactions, setTransactions] = useState([]);
+ // State to store product information
+ const [productInfo, setProductInfo] = useState({});
+ // State to manage the currently active tab
+ const [activeTab, setActiveTab] = useState('pending');
+ const navigate = useNavigate();
+
+  // Fetch transactions from the server when the component mounts
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
@@ -27,7 +32,7 @@ const OrderFulfillment = () => {
     fetchTransaction();
   }, []);
 
-
+  // Cancel a transaction and update its status
   const cancelTransaction = async (transactionId) => {
     try {
       const response = await axios.patch(`http://localhost:5000/api/transactions/${transactionId}`, {
