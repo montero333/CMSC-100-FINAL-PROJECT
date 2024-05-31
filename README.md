@@ -86,7 +86,15 @@ Mainly used for User Design:
 - UserContext.jsx 
 
 **ADMIN**
-- palagay here jess
+-SRC/assets - specific assets folder for images used for admin pages
+-Admin Dashboard (CSS and JSX) - to be able to access and navigate to the other admin pages 
+-Order Fulfillment (CSS AND JSX) - access orders to confirm or cancel
+-Sales Reports (CSS AND JSX) - view Weekly, Monthly, Annual, and Product Sales
+-Product Listing (CSS AND JSX) - allows editing, deleting, and adding products
+-Edit Product (CSS AND JSX) - works with product listing for editing product
+-User Account (CSS AND JSX) - view and search user accounts details
+
+
 
 ### BACKEND
 
