@@ -163,31 +163,32 @@ const OrderFulfillment = () => {
 
   return (
     <>
-      <div className="order-fulfillment-container">
-        <div className="menu-bar">
-          <h2 className="page-title">Order Fulfillment</h2>
-          <button className="back-to-dashboard-btn" onClick={() => navigate('/admin-dashboard')}>Back to Dashboard</button>
+      <div className="om-order-fulfillment-container">
+        <div className="om-menu-bar">
+          <h2 className="om-page-title">Order Fulfillment</h2>
+          <button className="om-back-to-dashboard-btn" onClick={() => navigate('/admin-dashboard')}>Back to Dashboard</button>
         </div>
-        <div className="order-tabs">
-          
-          <button className={`tab ${activeTab === 'pending' ? 'active' : ''}`} onClick={() => handleChange('pending')}>Orders to Fulfill</button>
-          <button className={`tab ${activeTab === 'confirmed' ? 'active' : ''}`} onClick={() => handleChange('confirmed')}>Confirmed Orders</button>
-          <button className={`tab ${activeTab === 'cancelled' ? 'active' : ''}`} onClick={() => handleChange('cancelled')}>Cancelled Orders</button>
+        <div className="om-order-tabs">
+          <button className={`om-tab ${activeTab === 'pending' ? 'active' : ''}`} onClick={() => handleChange('pending')}>Orders to Fulfill</button>
+          <button className={`om-tab ${activeTab === 'confirmed' ? 'active' : ''}`} onClick={() => handleChange('confirmed')}>Confirmed Orders</button>
+          <button className={`om-tab ${activeTab === 'cancelled' ? 'active' : ''}`} onClick={() => handleChange('cancelled')}>Cancelled Orders</button>
         </div>
-        <div className="order-tab-content">
-        <div className="order-tab-content-title">
-          {activeTab === 'pending' && pendingTransactions.length > 0 && <h3>Orders to Fulfill</h3>}
-          {activeTab === 'confirmed' && confirmedTransactions.length > 0 && <h3>Confirmed Orders</h3>}
-          {activeTab === 'cancelled' && cancelledTransactions.length > 0 && <h3>Cancelled Orders</h3>}
+        <div className="om-order-tab-content">
+          <div className="om-order-tab-content-title">
+            {activeTab === 'pending' && pendingTransactions.length > 0 && <h3>Orders to Fulfill</h3>}
+            {activeTab === 'confirmed' && confirmedTransactions.length > 0 && <h3>Confirmed Orders</h3>}
+            {activeTab === 'cancelled' && cancelledTransactions.length > 0 && <h3>Cancelled Orders</h3>}
           </div>
+          {/* Display pending transactions */}
           {activeTab === 'pending' && pendingTransactions.map((transaction) => (
-            <div key={transaction.transactionId} className="order-card">
-              <div className="order-card-header-fulfill">
+            <div key={transaction.transactionId} className="om-order-card">
+              <div className="om-order-card-header-fulfill">
                 <p>
                   Transaction ID: {transaction.transactionId} | Status: Pending | Email: {transaction.userEmail}
                 </p>
               </div>
-              <div className="order-card-body">
+              <div className="om-order-card-body">
+                {/* Display product information for each product in the transaction */}
                 {transaction.products.map((product) => (
                   <div key={product.ProductId} className="product-info">
                     <img
@@ -196,7 +197,7 @@ const OrderFulfillment = () => {
                       className="product-image"
                     />
                     <div>
-                    <h6 className="product-name-order"><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
+                      <h6 className="product-name-order"><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
                       <p>Quantity: {product.quantity}</p>
                       <p>Date and Time: {transaction.date}, {transaction.time} | <em>Mode of Payment: Cash on Delivery</em></p>
                       <p className="total-price">Total Price: ₱{transaction.totalPrice.toFixed(2)}</p>
@@ -204,7 +205,7 @@ const OrderFulfillment = () => {
                   </div>
                 ))}
               </div>
-              <div className="order-card-footer">
+              <div className="om-order-card-footer">
                 <div className="action-buttons">
                   {transaction.status === 0 && (
                     <>
@@ -220,14 +221,15 @@ const OrderFulfillment = () => {
             </div>
           ))}
 
+          {/* Display confirmed transactions */}
           {activeTab === 'confirmed' && confirmedTransactions.map((transaction) => (
-            <div key={transaction.transactionId} className="order-card">
-              <div className="order-card-header-fulfill">
+            <div key={transaction.transactionId} className="om-order-card">
+              <div className="om-order-card-header-fulfill">
                 <p>
                   Transaction ID: {transaction.transactionId} | Status: Confirmed | Email: {transaction.userEmail}
                 </p>
               </div>
-              <div className="order-card-body">
+              <div className="om-order-card-body">
                 {transaction.products.map((product) => (
                   <div key={product.ProductId} className="product-info">
                     <img
@@ -236,7 +238,7 @@ const OrderFulfillment = () => {
                       className="product-image"
                     />
                     <div>
-                    <h6 className="product-name-order"><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
+                      <h6 className="product-name-order"><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
                       <p>Quantity: {product.quantity}</p>
                       <p>Date and Time: {transaction.date}, {transaction.time} | <em>Mode of Payment: Cash on Delivery</em></p>
                       <p className="total-price">Total Price: ₱{transaction.totalPrice.toFixed(2)}</p>
@@ -244,7 +246,7 @@ const OrderFulfillment = () => {
                   </div>
                 ))}
               </div>
-              <div className="order-card-footer">
+              <div className="om-order-card-footer">
                 <div className="action-buttons">
                   {transaction.status === 0 && (
                     <>
@@ -260,14 +262,15 @@ const OrderFulfillment = () => {
             </div>
           ))}
 
+          {/* Display cancelled transactions */}
           {activeTab === 'cancelled' && cancelledTransactions.map((transaction) => (
-            <div key={transaction.transactionId} className="order-card">
-              <div className="order-card-header-fulfill">
+            <div key={transaction.transactionId} className="om-order-card">
+              <div className="om-order-card-header-fulfill">
                 <p>
                   Transaction ID: {transaction.transactionId} | Status: Cancelled | Email: {transaction.userEmail}
                 </p>
               </div>
-              <div className="order-card-body">
+              <div className="om-order-card-body">
                 {transaction.products.map((product) => (
                   <div key={product.ProductId} className="product-info">
                     <img
@@ -276,7 +279,7 @@ const OrderFulfillment = () => {
                       className="product-image"
                     />
                     <div>
-                    <h6 className="product-name"><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
+                      <h6 className="product-name"><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
                       <p>Quantity: {product.quantity}</p>
                       <p>Date and Time: {transaction.date}, {transaction.time} | <em>Mode of Payment: Cash on Delivery</em></p>
                       <p className="total-price">Total Price: ₱{transaction.totalPrice.toFixed(2)}</p>
@@ -284,7 +287,7 @@ const OrderFulfillment = () => {
                   </div>
                 ))}
               </div>
-              <div className="order-card-footer">
+              <div className="om-order-card-footer">
                 <div className="action-buttons">
                   {transaction.status === 0 && (
                     <>
@@ -300,6 +303,7 @@ const OrderFulfillment = () => {
             </div>
           ))}
 
+          {/* Display messages if no transactions */}
           {activeTab === 'pending' && pendingTransactions.length === 0 && <p>No pending orders to display.</p>}
           {activeTab === 'confirmed' && confirmedTransactions.length === 0 && <p>No confirmed orders to display.</p>}
           {activeTab === 'cancelled' && cancelledTransactions.length === 0 && <p>No cancelled orders to display.</p>}
@@ -308,5 +312,6 @@ const OrderFulfillment = () => {
     </>
   );
 };
+
 
 export default OrderFulfillment;
