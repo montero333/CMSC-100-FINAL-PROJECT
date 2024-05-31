@@ -8,7 +8,7 @@
   color: #fff;
 }
 
-.user-details-green {
+.user-details-green-user-account {
   background-color: #242424;
   margin-left: 22px;
   margin-right: 22px;
@@ -22,7 +22,7 @@
   font-size: 18px;
 }
 
-.user-details-green .close-button {
+.user-details-green-user-account .close-button-user-account {
   position: absolute;
   padding: 20px;
   top: 20px;
@@ -31,12 +31,12 @@
   color: #000000;
   border: none;
   font-weight: bold;
-  font-size:20px;
+  font-size: 20px;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.back-button {
+.back-button-user-account {
   display: inline-block;
   margin: 0px;
   padding: 20px 20px;
@@ -51,7 +51,7 @@
   border-color: transparent;
 }
 
-.back-button:hover {
+.back-button-user-account:hover {
   background-color: #bfbfbf;
 }
 
@@ -63,7 +63,7 @@
   margin-left: 20px;
 }
 
-.search-bar {
+.search-bar-user-account {
   padding: 10px;
   width: 1135px;
   margin-left: 22px;
@@ -75,7 +75,7 @@
   font-family: Arial, sans-serif;
 }
 
-.user-item {
+.user-item-user-account {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,17 +85,16 @@
   margin-bottom: 10px;
 }
 
-.user-card {
+.user-card-user-account {
   display: flex;
   background-color: #cbcbcb;
   border: none;
   padding: 15px;
   margin: 23px;
   border-radius: 10px;
-  
 }
 
-.user-card-title {
+.user-card-title-user-account {
   font-size: 25px;
   padding-left: 10px;
   padding-right: 20px;
@@ -104,19 +103,19 @@
   width: 1200px;
 }
 
-.user-card-subtitle {
+.user-card-subtitle-user-account {
   font-size: 20px;
   padding-left: 10px;
   color: #000000;
 }
 
-.card-text-container {
+.card-text-container-user-account {
   display: flex;
   flex-direction: column;
-  padding-right:5px;
+  padding-right: 5px;
 }
 
-.view-details-button {
+.view-details-button-user-account {
   padding: 5px 10px;
   background-color: #848484;
   color: #ffffff;
@@ -128,83 +127,80 @@
   text-align: left;
 }
 
-.view-details-button:hover {
+.view-details-button-user-account:hover {
   background-color: #e0e0e0;
 }
 
-.results-container {
+.results-container-user-account {
   color: #000000; /* Change to your desired text color */
   padding: 20px;
   border-radius: 5px;
 }
 
-.results-header {
+.results-header-user-account {
   margin-bottom: 1rem;
   font-size: 24px;
   font-weight: bold;
-  color:#000000;
+  color: #000000;
 }
 
-.results-divider {
-  
+.results-divider-user-account {
   margin: 10px 0 180px 0;
 }
 
-
-.user-modal {
+.user-modal-user-account {
   font-family: Arial, sans-serif;
 }
 
-.user-modal-title {
+.user-modal-title-user-account {
   font-weight: bold;
 }
 
-.user-modal-footer {
+.user-modal-footer-user-account {
   text-align: center;
 }
 
-.custom-title {
+.custom-title-user-account {
   color: #000000; /* Red color for title */
   font-size: 20px;
   font-family: Arial, sans-serif;
 }
 
-.custom-subtitle {
+.custom-subtitle-user-account {
   color: #000000; /* Green color for subtitle */
   font-size: 20px;
   font-family: Arial, sans-serif;
-
 }
 
-.custom-text {
+.custom-text-user-account {
   color: #000000; /* Blue color for text */
   font-size: 20px;
   font-family: Arial, sans-serif;
 }
 
-.custom-acc-style {
+.custom-acc-style-user-account {
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: Arial, sans-serif;
   margin-left: 50px;
-  margin-top:50px;
-  color:#ffffff;
+  margin-top: 50px;
+  color: #ffffff;
 }
 
-.card-title-style{
+.card-title-style-user-account {
   font-size: 30px;
   font-weight: bold;
   margin-top: 0;
   font-family: Arial, sans-serif;
-  color:#000000;
+  color: #000000;
 }
 
-.navbar-custom-user {
+.navbar-custom-user-account {
   background-color: #f7f5f5; /* Background color */
 }
 
-.navbar-custom-user .navbar-brand {
+.navbar-custom-user-account .navbar-brand {
   font-weight: bold; /* Font weight for brand text */
   color: #475548; /* Text color */
 }

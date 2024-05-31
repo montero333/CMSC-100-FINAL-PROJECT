@@ -4,7 +4,6 @@ import { Container, Row, Col, Card, Button, Form, Navbar } from 'react-bootstrap
 import { useNavigate } from 'react-router-dom';
 import './CSS/UserAccount.css';
 
-
 const UserAccount = ({ onCustomerCountChange }) => {
   // state variables
   const [users, setUsers] = useState([]); // all users fetched 
@@ -56,12 +55,12 @@ const UserAccount = ({ onCustomerCountChange }) => {
 
   return (
     <div className="user-account">
-      <Navbar bg="dark" variant="dark" className="navbar-custom-user mb-4">
+      <Navbar bg="dark" variant="dark" className="navbar-custom-user-account mb-4">
         <Container>
-          <Button variant="secondary" onClick={() => navigate('/admin-dashboard')} className="back-button">
+          <Button variant="secondary" onClick={() => navigate('/admin-dashboard')} className="back-button-user-account">
             Back to Dashboard
           </Button>
-          <Navbar.Brand className="custom-acc-style">User Accounts</Navbar.Brand>
+          <Navbar.Brand className="custom-acc-style-user-account">User Accounts</Navbar.Brand>
         </Container>
       </Navbar>
       
@@ -78,7 +77,7 @@ const UserAccount = ({ onCustomerCountChange }) => {
                   placeholder="Search by name, ID, email, or username"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-100 search-bar"
+                  className="w-100 search-bar-user-account"
                 />
               </Form.Group>
             </Form>
@@ -87,41 +86,41 @@ const UserAccount = ({ onCustomerCountChange }) => {
         
         {searchTerm && (
           <div>
-            <h5 className="mb-3 results-header">Results</h5>
+            <h5 className="mb-3 results-header-user-account">Results</h5>
             <Row xs={1} md={2} lg={3} className="g-4">
               {filteredUsers.map(user => (
                 <Col key={user.userId}>
-                  <Card className="h-100 user-card" style={{ fontFamily: 'Lato' }}>
+                  <Card className="h-100 user-card-user-account" style={{ fontFamily: 'Lato' }}>
                     <Card.Body className="d-flex justify-content-between align-items-center">
                       <div>
-                        <Card.Title className="custom-title">{`Name: ${user.firstName || ''} ${user.middleInitial ? user.middleInitial + ' ' : ''}${user.lastName || ''}`}</Card.Title>
-                        <Card.Title className="custom-title">{`ID: ${user.userId || ''}`}</Card.Title>
-                        <Card.Text className="custom-text">{`Email: ${user.email || ''}`}</Card.Text>
-                        <Card.Text className="custom-text">{`Username: ${user.UserName || ''}`}</Card.Text>
+                        <Card.Title className="custom-title-user-account">{`Name: ${user.firstName || ''} ${user.middleInitial ? user.middleInitial + ' ' : ''}${user.lastName || ''}`}</Card.Title>
+                        <Card.Title className="custom-title-user-account">{`ID: ${user.userId || ''}`}</Card.Title>
+                        <Card.Text className="custom-text-user-account">{`Email: ${user.email || ''}`}</Card.Text>
+                        <Card.Text className="custom-text-user-account">{`Username: ${user.UserName || ''}`}</Card.Text>
                       </div>
-                      <Button variant="success" onClick={() => handleViewDetails(user)} className="view-details-button">View Details</Button>
+                      <Button variant="success" onClick={() => handleViewDetails(user)} className="view-details-button-user-account">View Details</Button>
                     </Card.Body>
                   </Card>
                 </Col>
               ))}
             </Row>
-            <hr className="my-4 results-divider" style={{ margin: '10px 0px 180px 0px' }} />
+            <hr className="my-4 results-divider-user-account" style={{ margin: '10px 0px 180px 0px' }} />
           </div>
         )}
 
         <Row xs={1} md={2} lg={3} className="g-4">
           {users.map(user => (
             <Col key={user.userId}>
-              <Card className="user-card h-100" style={{ fontFamily: 'Montserrat' }}>
-                <div className="card-header">
-                  <Card.Title className="user-card-title">{`${user.firstName} ${user.middleInitial ? user.middleInitial + ' ' : ''}${user.lastName}`}</Card.Title>
-                  <Card.Subtitle className="user-card-subtitle mb-2 text-muted">{`${user.UserType} | ${user.userId}`}</Card.Subtitle>
+              <Card className="user-card-user-account h-100" style={{ fontFamily: 'Montserrat' }}>
+                <div className="card-header-user-account">
+                  <Card.Title className="user-card-title-user-account">{`${user.firstName} ${user.middleInitial ? user.middleInitial + ' ' : ''}${user.lastName}`}</Card.Title>
+                  <Card.Subtitle className="user-card-subtitle-user-account mb-2 text-muted">{`${user.UserType} | ${user.userId}`}</Card.Subtitle>
                 </div>
                 <Card.Body className="d-flex flex-column align-items-center justify-content-between" style={{ padding: '10px' }}>
-                  <div className="card-text-container" style={{ maxHeight: '100px', overflow: 'hidden' }}>
+                  <div className="card-text-container-user-account" style={{ maxHeight: '100px', overflow: 'hidden' }}>
                     {/* Your limited text content here */}
                   </div>
-                  <Button variant="success" onClick={() => handleViewDetails(user)} className="view-details-button">View Details</Button>
+                  <Button variant="success" onClick={() => handleViewDetails(user)} className="view-details-button-user-account">View Details</Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -130,8 +129,8 @@ const UserAccount = ({ onCustomerCountChange }) => {
 
         {/* Details in Green Background */}
         {showUserDetails && selectedUserDetails && (
-          <div className="user-details-green">
-            <Button variant="light" className="close-button" onClick={handleCloseDetails}>Close</Button>
+          <div className="user-details-green-user-account">
+            <Button variant="light" className="close-button-user-account" onClick={handleCloseDetails}>Close</Button>
             <h5 style={{ fontSize: '24px', fontWeight: 'bold' }}>User Details</h5>
             <p>{`Name: ${selectedUserDetails.firstName} ${selectedUserDetails.middleInitial ? selectedUserDetails.middleInitial + ' ' : ''}${selectedUserDetails.lastName}`}</p>
             <p>{`ID: ${selectedUserDetails.userId}`}</p>
