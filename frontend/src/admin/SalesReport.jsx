@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './css/SalesReport.css';
 
 const SalesReports = () => {
   const [weeklySales, setWeeklySales] = useState([]);
@@ -96,99 +96,84 @@ const SalesReports = () => {
   };
 
   return (
-    <>
-      <div className="container mt-5 mb-5">
-
-      <Button variant="secondary" className="mt-3" onClick={() => navigate('/admin-dashboard')}>
+    <div className="sales-report-container">
+      <div className="menu-bar">
+        <h2 className="page-title">Sales Report and Analytics</h2>
+        <button className="back-to-dashboard-btn" onClick={() => navigate('/admin-dashboard')}>
           Back to Dashboard
-        </Button>
-
-        <h2 className="mb-5">Sales Report and Analytics</h2>
-
-        <ul className="nav nav-tabs">
-          <li className="nav-item">
-            <button style={{ color: '#757575' }} className={`nav-link ${activeTab === 'weekly' ? 'active' : ''}`} onClick={() => handleDurationChange('weekly')}>
-              Weekly Sales
-            </button>
-          </li>
-          <li className="nav-item">
-            <button style={{ color: '#757575' }} className={`nav-link ${activeTab === 'monthly' ? 'active' : ''}`} onClick={() => handleDurationChange('monthly')}>
-              Monthly Sales
-            </button>
-          </li>
-          <li className="nav-item">
-            <button style={{ color: '#757575' }} className={`nav-link ${activeTab === 'annual' ? 'active' : ''}`} onClick={() => handleDurationChange('annual')}>
-              Annual Sales
-            </button>
-          </li>
-          <li className="nav-item">
-            <button style={{ color: '#757575' }} className={`nav-link ${activeTab === 'product' ? 'active' : ''}`} onClick={() => handleDurationChange('product')}>
-              Product Sales
-            </button>
-          </li>
-        </ul>
-
-
-        <div>
-          <h4 className="m-3" style={{ fontSize: '1.5rem' }}>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Sales</h4>
-
-          {activeTab === 'product' && (
-            <h4 className="m-3" style={{color: '#4CAF50', fontWeight: 'bold'}}>Total: ₱{calculateTotalSales()}</h4>
-          )}
-
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-            {activeTab === 'weekly' && weeklySales.map((sale, index) => (
-              <div key={index} className="col mb-4">
-                <div className="card h-100">
-                  <div className="card-body">
-                    <h5 className="text-muted card-title">Transaction ID: {sale.transactionId}</h5>
-                    <p className="card-text">Date: {sale.date}</p>
-                    <p className="card-text">Price: ₱{sale.totalPrice.toFixed(2)}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {activeTab === 'monthly' && monthlySales.map((sale, index) => (
-              <div key={index} className="col mb-4">
-                <div className="card h-100">
-                  <div className="card-body">
-                    <h5 className="text-muted card-title">Transaction ID: {sale.transactionId}</h5>
-                    <p className="card-text">Date: {sale.date}</p>
-                    <p className="card-text">Price: ₱{sale.totalPrice.toFixed(2)}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {activeTab === 'annual' && annualSales.map((sale, index) => (
-              <div key={index} className="col mb-4">
-                <div className="card h-100">
-                  <div className="card-body">
-                    <h5 className="text-muted card-title">Transaction ID: {sale.transactionId}</h5>
-                    <p className="card-text">Date: {sale.date}</p>
-                    <p className="card-text">Price: ₱{sale.totalPrice.toFixed(2)}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {activeTab === 'product' && productSales.map((product, index) => (
-              <div key={index} className="col mb-4">
-                <div className="card h-100">
-                  <img src={product.productImg} className="card-img-top" alt={product.productName} style={{ objectFit: 'cover', height: '150px' }} />
-                  <div className="card-body">
-                    <h5 className="text-muted card-title"><b>{product.productName}</b></h5>
-                    <p className="card-text text-muted">Product ID: {product.productId}</p>
-                    <p className="card-text">Sold: {product.quantity} | Price: ₱{product.price.toFixed(2)} | Total Profit: ₱{(product.price * product.quantity).toFixed(2)}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        </button>
       </div>
-    </>
+
+      <div className="order-tabs">
+        <button className={`tab ${activeTab === 'weekly' ? 'active' : ''}`} onClick={() => handleDurationChange('weekly')}>
+          Weekly Sales
+        </button>
+        <button className={`tab ${activeTab === 'monthly' ? 'active' : ''}`} onClick={() => handleDurationChange('monthly')}>
+          Monthly Sales
+        </button>
+        <button className={`tab ${activeTab === 'annual' ? 'active' : ''}`} onClick={() => handleDurationChange('annual')}>
+          Annual Sales
+        </button>
+        <button className={`tab ${activeTab === 'product' ? 'active' : ''}`} onClick={() => handleDurationChange('product')}>
+          Product Sales
+        </button>
+      </div>
+
+      <h4 className="order-tab-content-title">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Sales</h4>
+
+      {activeTab === 'product' && (
+        <h4 className="total-sales">Total: ₱{calculateTotalSales()}</h4>
+      )}
+
+      <div className="order-tab-content">
+        {activeTab === 'weekly' && weeklySales.map((sale, index) => (
+          <div key={index} className="order-card">
+            <div className="order-card-header">
+              Transaction ID: {sale.transactionId}
+            </div>
+            <div className="order-card-body">
+              <p>Date: {sale.date}</p>
+              <p>Price: ₱{sale.totalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+        ))}
+
+        {activeTab === 'monthly' && monthlySales.map((sale, index) => (
+          <div key={index} className="order-card">
+            <div className="order-card-header">
+              Transaction ID: {sale.transactionId}
+            </div>
+            <div className="order-card-body">
+              <p>Date: {sale.date}</p>
+              <p>Price: ₱{sale.totalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+        ))}
+
+        {activeTab === 'annual' && annualSales.map((sale, index) => (
+          <div key={index} className="order-card">
+            <div className="order-card-header">
+              Transaction ID: {sale.transactionId}
+            </div>
+            <div className="order-card-body">
+              <p>Date: {sale.date}</p>
+              <p>Price: ₱{sale.totalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+        ))}
+
+        {activeTab === 'product' && productSales.map((product, index) => (
+          <div key={index} className="order-card">
+            <img src={product.productImg} alt={product.productName} className="product-image" />
+            <div className="order-card-body">
+              <h6 className="product-name"><b>{product.productName}</b></h6>
+              <p>Product ID: {product.productId}</p>
+              <p>Sold: {product.quantity} | Price: ₱{product.price.toFixed(2)} | Total Profit: ₱{(product.price * product.quantity).toFixed(2)}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

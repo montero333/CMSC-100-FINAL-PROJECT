@@ -1,9 +1,8 @@
-// src/components/SignIn.jsx
-import React, { useState } from 'react';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Form, Alert } from 'react-bootstrap'; // Import Alert component
 import { useNavigate } from 'react-router-dom';
-import { Link, NavLink } from 'react-router-dom';
 import { useUser } from './UserContext.jsx'; // Adjust path as needed
+import './Login.css';
 
 const SignIn = () => {
   const { setUserId } = useUser();
@@ -11,9 +10,27 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showContainer, setShowContainer] = useState(false);
 
+  useEffect(() => {
+    // Show container after 5 seconds
+    const timeout = setTimeout(() => {
+      setShowContainer(true);
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Sign In
   const handleSignIn = async (e) => {
     e.preventDefault();
+
+    // Check for empty email or password
+    if (!email.trim() || !password.trim()) {
+      setError('Please fill in all fields.'); // Set error message
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:5000/api/signin', {
         method: 'POST',
@@ -36,36 +53,52 @@ const SignIn = () => {
   };
 
   return (
-    <div
-      className="imageOverlay bg-dark"
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Container className="mt-5" style={{ width: '500px', backgroundColor: '#f8f9fa', padding: '40px', borderRadius: '8px' }}>
-        <h4 className="text-center mb-4 dark-text">Sign In as Admin or Customer</h4>
-        <Form onSubmit={handleSignIn}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label className="dark-text" style={{ paddingTop: '20px' }}>Email address</Form.Label>
-            <Form.Control type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
-          </Form.Group>
+    <div className="login-signin-container">
+      <video autoPlay loop muted className="login-background-video">
+        <source src="assets/background/login_bg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className={`login-logo-container ${showContainer ? 'fade-out' : ''}`}>
+        <img src="assets/elements/main_logo.png" alt="Main Logo" className="login-main-logo" />
+      </div>
+      <Container className="login-white-container" style={{ opacity: showContainer ? 1 : 0 }}>
+        <button className="left-arrow-button" onClick={() => navigate('/')}> X
+        <div className="left-arrow-icon"></div>
+        </button>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label className="dark-text" style={{ paddingTop: '20px' }}>Password</Form.Label>
-            <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-          </Form.Group>
+        <div className="green-rectangle">  
+          <div className="sign-in-text">SIGN IN</div>
+          <div className="subtitle">Always Welcome Here</div>
+          <div className="form-rectangle">  
+          <Form onSubmit={handleSignIn}>
+            <Form.Group controlId="formBasicEmail">
+              <div className="sign-in-text-form">EMAIL</div>
+              <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter email"
+                className="custom-input"
+              />
+            </Form.Group>
+            <div className="sign-in-text-form">PASSWORD</div>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                className="custom-input"
+              />
+            </Form.Group>
+            {error && <Alert variant="danger" className="error-alert">{error}</Alert>}
 
-          <Button variant="success" type="submit" className="w-100 mt-3 cstm-btn" style={{ marginTop: '10px', padding: '10px' }}>
-            <i className="fas fa-sign-in-alt mr-2"></i> Sign In
-          </Button>
-
-          {error && <Alert variant="danger" className="error-alert">{error}</Alert>}
-        </Form>
-        <p style={{ fontFamily: 'Lato, sans-serif', marginTop: '10px', textAlign: 'center' }}>
-          Don't have an account? <Link to="/signup" style={{ color: '#4CAF50', fontWeight: 'bold', textDecoration: 'none' }}>Sign up</Link>
-        </p>
+            <button variant="success" type="submit" className="button-submit">  LOGIN  </button>
+            
+          </Form>
+          </div>
+        </div>
+        <img src="assets/elements/run.gif" alt="Running" className="run-gif" />
       </Container>
     </div>
   );

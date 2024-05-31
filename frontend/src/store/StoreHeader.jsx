@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Navbar, Container, Dropdown, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import CartDisplay from './CartDisplay.jsx';
+import './StoreHeader.css';
 
 const StoreHeader = ({ cart, setCart, handleCheckout, removeFromCart }) => {
   const [isCartVisible, setCartVisible] = useState(false);
@@ -20,39 +21,30 @@ const StoreHeader = ({ cart, setCart, handleCheckout, removeFromCart }) => {
     <>
       <Navbar bg="light" expand="lg" className="sticky-top custom-navbar">
         <Container>
-          <Navbar.Brand as={Link} to="/store">Store</Navbar.Brand>
-          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-            {/* Shopping Cart Button */}
-            <Button
-              variant="outline-success"
-              className="position-relative"
-              style={{ marginRight: '40px' }}
-              onClick={handleCartClick}
-            >
-              Cart ({cart.length})
-            </Button>
-            {/* Render CartDisplay component */}
-            {isCartVisible && (
-              <CartDisplay cart={cart} setCart={setCart} handleCheckout={handleCheckout} removeFromCart={removeFromCart} isVisible={isCartVisible} />
-            )}
-
-            {/* Account Dropdown */}
-            <Dropdown>
-              <Dropdown.Toggle variant="default" id="account-dropdown" className="custom-dropdown-toggle">
-                Account
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="/store/profile" className="custom-dropdown-item">
-                  Profile
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleLogout} className="custom-dropdown-item">
-                  Logout
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+          <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse">
+            <Nav className="navbar-nav">
+              <Nav.Link as={Link} to="/store" className="nav-link">Store</Nav.Link>
+              <Nav.Link as={Link} to="/store/profile" className="nav-link">Account</Nav.Link>
+              <Button
+                variant="outline-success"
+                className="logout-link"
+                onClick={handleCartClick}
+              >
+                Cart ({cart.length})
+              </Button>
+              <Nav.Link as="button" className="logout-link" onClick={handleLogout}>Logout</Nav.Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <CartDisplay
+        cart={cart}
+        setCart={setCart}
+        handleCheckout={handleCheckout}
+        removeFromCart={removeFromCart}
+        isVisible={isCartVisible}
+        toggleCartVisibility={handleCartClick}
+      />
       <Outlet />
     </>
   );

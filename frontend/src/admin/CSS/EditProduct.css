@@ -1,43 +1,79 @@
 .edit-product-modal {
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .edit-product-modal .modal-header {
-    background-color: #4CAF50;
-    border-bottom: none;
-  }
-  
-  .edit-product-modal .modal-header .btn-close {
-    color: white;
-    opacity: 0.5;
-  }
-  
-  .edit-product-modal .modal-header .btn-close:hover {
-    opacity: 0.7;
-  }
-  
-  .edit-product-modal .modal-title {
-    color: white;
-    font-weight: bold;
-  }
-  
-  .edit-product-modal .modal-body {
-    padding: 20px;
-  }
-  
-  .edit-product-modal .form-control {
-    font-size: 0.875rem;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  
-  .edit-product-modal .btn-success {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-    font-weight: bold;
-  }
-  
-  .edit-product-modal .btn-success:hover {
-    background-color: #3e8e41;
-    border-color: #3e8e41;
-  }
+  font-family: 'Montserrat', sans-serif;
+}
+
+.edit-product-modal .modal-header {
+  background-color: #4CAF50;
+  border-bottom: none;
+  size: 40px;
+}
+
+.edit-product-modal .modal-title {
+  color: white;
+  font-weight: bold;
+  size:50px;
+}
+
+.edit-product-modal .modal-body {
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.edit-product-form{
+  margin-bottom: 20px;
+}
+
+.edit-product-form .form-control {
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.edit-product-form .btn-success {
+  background-color: #4CAF50;
+  border-color: transparent;
+  font-weight: bold;
+  margin-left: 1%;
+}
+
+.edit-product-form .btn-success:hover {
+  background-color: #3e8e41;
+  border-color: transparent;
+}
+
+.modal-title {
+  color: #000000; /* Text color */
+  font-size: 1.5rem; /* Font size */
+  font-weight: bold; /* Font weight */
+  margin-bottom: 15px; /* Bottom margin */
+  font-family: 'Montserrat', sans-serif;
+  padding:1%;
+}
+
+
+.d-flex.justify-content-between .btn-secondary {
+  /* Styling for the Close button */
+  background-color: #6c757d; /* Button background color */
+  color: #ffffff; /* Text color */
+  border-color: transparent;
+  font-weight: bold; /* Bold text */
+  margin-left: 1%;
+}
+
+.d-flex.justify-content-between .btn-secondary:hover {
+  /* Hover effect for the Close button */
+  background-color: #5a6268; /* Darker background color */
+  border-color: transparent;
+}
+
+.edit-product-form .form-label {
+  /* Styling for the label */
+  padding: 1%;
+  font-family: 'Montserrat', sans-serif;
+  color: #333; /* Example text color */
+}
+
+/* Adjust the margin or padding as needed */
+.d-flex.justify-content-between {
+  margin-top: 20px; /* Example margin for space between buttons and form */
+}

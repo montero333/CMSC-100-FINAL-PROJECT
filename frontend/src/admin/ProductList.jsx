@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import short  from 'short-uuid';
 import EditProductModal from './EditProduct.jsx';
-import { Toast, Button } from 'react-bootstrap';
+import { Toast, Button, Navbar, Container } from 'react-bootstrap';
+
 import { useNavigate } from 'react-router-dom';
 import './CSS/ProductList.css';
 
@@ -175,20 +176,28 @@ const handleEditProduct = async () => {
   });
 
   return (
-    <>           
+    <>     
+          <Navbar bg="dark" variant="dark" className="prod-navbar">
+        <Container>
+          
+          <Navbar.Brand className="custom-prod-style">Product List</Navbar.Brand>
+          <Button variant="secondary" onClick={() => navigate('/admin-dashboard')} className="back-product-button">
+            Back to Dashboard
+          </Button>
+        </Container>
+      </Navbar>
+        
     <div className="container mt-3">
       <div className="row">
       <div className="col-md-4">
           <div className="card">
             <div className="card-body">
-              
-              <Button variant="secondary" onClick={() => navigate('/admin-dashboard')}>
-                Back to Dashboard
-                </Button>
 
-              <h3 className="card-title">Add Product</h3>
+              
               
               <form>
+              <div className="add-product-container" style={{padding: '20px', marginBottom: '20px' }}>
+              <h3 className="card-title-style">Add Product</h3>
                 <div className="mb-3">
                   <label htmlFor="productName" className="form-label">
                     Product Name:
@@ -278,11 +287,10 @@ const handleEditProduct = async () => {
                 <button
                   type="button"
                   onClick={handleAddProduct}
-                  className="btn btn-success"
-                  style={{ backgroundColor: '#4CAF50' }}
-                >
+                  className="btn btn-success add-product-btn">
                   Add Product
                 </button>
+                </div>
                     <Toast
                     onClose={() => setShowAddedToList(false)}
                     show={showAddedToList}
@@ -304,7 +312,7 @@ const handleEditProduct = async () => {
                     
                     <Toast.Body style={{ fontFamily: 'Montserrat', color: 'white' }}>
                         <strong className="mr-auto" style={{ fontWeight: 'bold' }}>
-                        SUCSESS: &nbsp;
+                        SUCCESS: &nbsp;
                         </strong>
                         The product is added to the listing!
                     </Toast.Body>
@@ -317,36 +325,40 @@ const handleEditProduct = async () => {
         <div className="col-md-8 product-listing">
           {/* sorting dropdown */}
           <div className="sorting-form mb-3 d-flex align-items-center justify-content-between" style={{ maxWidth: '900px' }}>
-            <h3>List of Products</h3>
-            <div className="d-flex align-items-center">
-              <label htmlFor="sortCriteria" className="form-label me-2">
-                <h6 style={{color: '#757575'}}>Sort by:</h6>
-              </label>
-              <select
-                id="sortCriteria"
-                className="form-select me-3"
-                value={sortCriteria}
-                onChange={handleSortCriteriaChange}
-              >
-                <option value="name">Name</option>
-                <option value="type">Type</option>
-                <option value="price">Price</option>
-                <option value="quantity">Quantity</option>
-              </select>
+          <h3 className="product-list-title">List of Products</h3>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+  <div className="d-flex align-items-center">
+    <label htmlFor="sortCriteria" className="form-label me-2">
+      Sort by:
+    </label>
+    <select
+      id="sortCriteria"
+      value={sortCriteria}
+      onChange={handleSortCriteriaChange}
+      className="form-select me-2"
+      style={{ width: '150px' }}
+    >
+      <option value="name">Name</option>
+      <option value="price">Price</option>
+      <option value="type">Type</option>
+      <option value="quantity">Quantity</option>
+    </select>
 
-              <label htmlFor="sortOrder" className="form-label me-2">
-              <h6 style={{color: '#757575'}}>Order:</h6>
-              </label>
-              <select
-                id="sortOrder"
-                className="form-select"
-                value={sortOrder}
-                onChange={handleSortOrderChange}
-              >
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
-              </select>
-            </div>
+    <label htmlFor="sortOrder" className="form-label me-2">
+      Order:
+    </label>
+    <select
+      id="sortOrder"
+      value={sortOrder}
+      onChange={handleSortOrderChange}
+      className="form-select"
+      style={{ width: '150px' }}
+    >
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+</div>
           </div>
           {sortedProducts.map((product) => (
             <div key={product.id} className="card mb-3">
@@ -368,18 +380,20 @@ const handleEditProduct = async () => {
                       <span>Price: ₱{product.price}</span>
                     </p>
                     <div className="d-flex mt-3">
-                      <button
-                        onClick={() => handleEditButtonClick(product)}
-                        className="btn btn-warning btn-sm me-2"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDeleteProduct(product.id)}
-                        className="btn btn-outline-danger btn-sm"
-                      >
-                        Delete
-                      </button>
+                    <div className="edit-delete-buttons">
+  <button
+    onClick={() => handleEditButtonClick(product)}
+    className="btn btn-warning btn-sm me-2"
+  >
+    Edit
+  </button>
+  <button
+    onClick={() => handleDeleteProduct(product.id)}
+    className="btn btn-outline-danger btn-sm"
+  >
+    Delete
+  </button>
+</div>
                     </div>
                   </div>
                 </div>

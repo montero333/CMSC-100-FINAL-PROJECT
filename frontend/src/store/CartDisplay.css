@@ -1,0 +1,148 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+/* Overlay for popup */
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.overlay.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Popup container */
+.popup {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 600px;
+  height: 80%;
+  max-height: 600px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}
+
+/* Cart container */
+.cart-display {
+  width: 100%;
+  height: 100%;
+}
+
+/* Checkout button styling */
+.checkout-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.checkout-button:hover {
+  background-color: #45a049;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr; /* Adjust column widths as needed */
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+  
+  .item-name,
+  .item-quantity,
+  .item-actions,
+  .item-price {
+    padding: 5px; /* Add padding for better spacing */
+  }
+  
+  .item-name {
+    grid-column: 1 / span 2; /* Span the first two columns for the item name */
+  }
+  
+  .item-quantity,
+  .item-actions,
+  .item-price {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+  }
+  
+  .item-actions {
+    justify-content: flex-start; /* Adjust to start from the left */
+  }
+  
+  /* Adjust margins for better spacing */
+  .item-actions button {
+    margin-right: 5px;
+  }
+  
+  /* Empty cart message styling */
+  .empty-cart-message {
+    text-align: center;
+    margin-top: 50px; /* Adjust as needed */
+  }
+  
+
+/* Center text in header */
+.card-header {
+  text-align: center;
+}
+
+/* Subtitle styling */
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-top: -40px; /* Adjust margin to bring it closer to the main title */
+}
+
+/* Center text in footer */
+.card-footer {
+  text-align: center;
+}
+
+.text-center-title {
+  font-size: 25px;
+  margin-top: 5px; /* Adjust margin to bring it closer to the main title */
+  margin-bottom: 60px;
+}
+

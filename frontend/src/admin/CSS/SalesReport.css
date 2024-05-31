@@ -1,0 +1,126 @@
+.sales-report-container {
+    padding: 20px;
+    font-family: Montserrat, sans-serif;
+    background-color: #789176;
+  }
+  
+  .menu-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .page-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .back-to-dashboard-btn {
+    background-color: #2a2f2b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .back-to-dashboard-btn:hover {
+    background-color: #486551;
+  }
+  
+  .order-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    background-color: #e0e0e0;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tab.active {
+    background-color: #1d473e;
+    color: white;
+  }
+  
+  .tab:hover {
+    background-color: #696969;
+  }
+  
+  .order-tab-content-title {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #ffffff;
+    background-color: rgb(52, 51, 51);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .total-sales {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .order-tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    color: #000000;
+    background-color: #e0e0e0;
+    padding: 20px;
+  }
+  
+  .order-card {
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-card-header {
+    background-color: #395439;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .order-card-body {
+    margin-top: 10px;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .product-name {
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4CAF50;
+  }
+
+  .total-sales {
+    font-size: 1.5rem;
+    color: #2f2f2f;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  

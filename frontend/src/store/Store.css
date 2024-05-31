@@ -1,0 +1,241 @@
+/* Store.css */
+
+/* Style for product container */
+.product-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    top: 320px;
+    position: relative;
+  }
+  
+  /* Style for individual product card */
+  .product-card {
+    width: calc(33.33% - 20px); /* 3 cards per row with spacing */
+    margin: 10px;
+    background-color: #f9f9f9; /* Background color for the card */
+    border-radius: 10px;
+  }
+  
+  /* Style for product image */
+  .product-image {
+    width: 100%;
+    height: 150px; /* Adjust the height as needed */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  /* Style for product details */
+  .product-details {
+    padding: 10px;
+  }
+  
+  /* Style for product name */
+  .product-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Text color for product name */
+  }
+  
+  /* Style for product description */
+  .product-description {
+    font-family: 'Lato', sans-serif;
+    color: #666; /* Text color for product description */
+    margin-bottom: 5px;
+  }
+  
+  /* Style for product price */
+  .product-price {
+    color: #8D6E63;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for product stock */
+  .product-stock {
+    color: #666; /* Text color for product stock */
+    margin-bottom: 10px;
+  }
+  
+  /* Style for add to cart button */
+  .add-to-cart-button {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* Style for toast messages */
+  .toast {
+    position: fixed;
+    padding: 10px;
+    bottom: 40px;
+    left: 80px;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: none;
+  }
+  
+  /* Style for success toast */
+  .toast-success {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* Style for error toast */
+  .toast-error {
+    background-color: #FFC107;
+    color: black;
+  }
+
+  .cart-summary-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .cart-summary-sticky-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .cart-summary-popup-content {
+    background-color: rgba(255, 255, 255, 0.295);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  /* Adjust other styles as needed */
+  
+
+  .background-container {
+    background-image: url('assets/background/store_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 165%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensures the background stays behind other content */
+}
+
+.searchBar {
+    width: 60%; /* Adjust the width as needed */
+    height: 70px; /* Adjust the height as needed */
+    font-size: 24px; /* Adjust the font size as needed */
+    border-radius: 35px; /* Rounded corners */
+    padding: 0 20px; /* Padding inside the search bar */
+    border: 2px solid #ccc; /* Border style */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Shadow for a 3D effect */
+    outline: none;
+    position: absolute;
+    right: 357px;
+    top: 110px;
+}
+
+/* Sort Button Container */
+.sort-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 0px;
+    position: absolute;
+    left: 1180px;
+    top: 200px;
+}
+
+/* Sort Button */
+.sort-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sort-button:hover {
+    background-color: #e2e6ea;
+    color: #000;
+}
+
+.sort-button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.sort-button .sort-icon {
+    margin-left: 10px;
+}
+
+.type-heading {
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+
+.pagination-item {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none; /* Remove underlines */
+}
+
+.pagination-item:hover:not(.disabled) {
+    color: green; /* Change color to green when clickable */
+    text-decoration: none; /* Remove underlines on hover */
+}
+
+.pagination-item.active {
+    pointer-events: none; /* Disable pointer events on active item */
+}
+
+.pagCon {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+.pagination .page-link {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    color: green;
+    text-decoration: none;
+}
+
+.pagination .page-item.active .page-link {
+    pointer-events: none;
+}
+
+
+

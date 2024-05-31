@@ -1,62 +1,229 @@
 .product-listing {
-    font-family: 'Montserrat', sans-serif;
-  }
+  font-family: 'Montserrat', sans-serif;
+}
+
+.product-listing .card {
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+  padding-left: 1%;
+  padding-right: 1.25%;
+  margin-bottom: 5%;
+}
+
+.product-listing .card:hover {
+  box-shadow: 0 4px 8px rgba(113, 113, 113, 0.2);
+  color:#7e7f7e;
   
-  .product-listing .card {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
+}
+
+.product-listing .card-body {
+  margin-top: -3%;
+  padding: 10px;
+  background-color: #d7d7d7; /* Change this color to the desired background color */
+  color: #000000; /* Change this color to the desired text color */
+}
+
+.product-listing .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-listing .card-text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.product-listing .card-text span {
+  margin-right: 10px;
+}
+
+.product-listing .img-fluid {
+  border-radius: 5px;
+  margin:0px;
+
   
-  .product-listing .card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .product-listing .card-body {
-    padding: 20px;
-  }
-  
-  .product-listing .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .product-listing .card-text {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .product-listing .card-text span {
-    margin-right: 10px;
-  }
-  
-  .product-listing .img-fluid {
-    border-radius: 5px;
-  }
-  
-  .product-listing .sorting-form {
-    margin-bottom: 20px;
-  }
-  
-  .product-listing .form-select {
-    font-size: 0.875rem;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  
-  .product-listing .btn-warning {
-    background-color: #ffc107;
-    border-color: #ffc107;
-  }
-  
-  .product-listing .btn-warning:hover {
-    background-color: #e0b90f;
-    border-color: #e0b90f;
-  }
-  
-  .product-listing .btn-outline-danger {
-    border-color: #dc3545;
-  }
-  
-  .product-listing .btn-outline-danger:hover {
-    background-color: #dc354
+}
+
+.product-listing .sorting-form {
+  margin-bottom: 20px;
+  margin-left: 1%;
+  font-weight: bold;
+}
+
+.product-listing .form-select {
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 50px;
+  padding: 10px;
+  background-color: #c0bfbf;
+  outline: none; /* Remove the outline */
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.product-listing .edit-delete-buttons .btn-warning,
+.product-listing .edit-delete-buttons .btn-outline-danger {
+  padding: 10px 20px; /* Adjust padding as needed */
+  min-width: 90px; /* Adjust width as needed */
+  font-size: 20px; /* Adjust font size as needed */
+}
+
+.product-listing .edit-delete-buttons .btn-warning {
+  margin-right: 15px; /* Adjust the margin as needed */
+  margin-left: 0.25%;
+
+}
+
+.product-listing .btn-warning {
+  background-color: #496444;
+  border-color: transparent;
+  color: #ffffff;  
+  font-weight: bold;
+}
+
+.product-listing .btn-warning:hover {
+  background-color: #28422d;
+  border-color: transparent;
+}
+
+.product-listing .btn-outline-danger {
+  border-color: transparent;
+  background-color: #9b9a96;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.product-listing .btn-outline-danger:hover {
+  background-color: #565656;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #626f66; /* Adjust as needed */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.prod-navbar {
+  color: #3E5C47;
+}
+
+.back-product-button {
+  margin: 0px;
+  padding: 20px 20px;
+  background-color: #373636;
+  color: #ffffff;
+  text-decoration: none;
+  border-color:transparent;
+  border-radius: 0px;
+  padding-bottom: 15px;
+  margin-left: 970px;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+.back-product-button:hover {
+  background-color: #bfbfbf;
+}
+
+.custom-prod-style {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  margin-left: 0px;
+  margin-top: 50px;
+  color: #ffffff;
+}
+
+.mb-3 {
+  color: #000000;
+  font-size: 25px;
+}
+
+.add-product-container {
+  background-color: rgb(225, 225, 225);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.add-product-container .mb-3 {
+  display: flex;
+  width: 1000px;
+  padding-bottom: 10px;
+}
+
+.add-product-container .form-label {
+  width: 200px; /* Fixed width for labels */
+  margin-right: 10px; /* Add spacing between label and input field */
+  border: none;
+}
+
+.add-product-container .form-control,
+.add-product-container .form-select {
+  flex: 1; /* Take remaining space */
+  border: none;
+}
+
+.form-control {
+  margin-left: 10px;
+  border-radius: 5px; /* Rounded corners */
+  color: #000000; /* Border color */
+}
+
+.form-select {
+  margin-left: 10px;
+  border-radius: 5px; /* Rounded corners */
+  color: #000000; /* Border color */
+}
+
+.form-control.textarea {
+  margin-left: 10px;
+  min-height: 100px; /* Set minimum height for textarea */
+  resize: none; /* Disable resizing */
+  border-radius: 0; /* Rounded corners */
+  color: #d5d5d5; /* Border colo  r */
+}
+
+.btn {
+  border-radius: 5px; /* Rounded corners */
+  size: 100px;
+  padding: 20px;
+}
+
+.add-product-btn {
+  background-color: #49544a;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-left: 90%;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.add-product-btn:hover {
+  background-color: #b3c0b4; /* Darker green for hover effect */
+}
+
+.product-list-title {
+  font-size: 2rem; /* Adjust the font size */
+  font-weight: bold; /* Make the text bold */
+  color: #000000; /* Change the color */
+  margin-bottom: 20px; /* Add some margin at the bottom */
+  text-align: left; /* Center the text */
+}

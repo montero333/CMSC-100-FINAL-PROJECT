@@ -6,11 +6,11 @@ const EditProductModal = ({ editProduct, handleClose, handleEditProduct, handleE
 
   return (
     <Modal show={!!editProduct} onHide={handleClose} centered>
-      <Modal.Header closeButton>
-        <Modal.Title>Edit Product</Modal.Title>
+      <Modal.Header>
+        <Modal.Title className="modal-title">Edit Product</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form>
+        <form className="edit-product-form">
           <div className="mb-3">
             <label htmlFor="editProductName" className="form-label">
               Product Name:
@@ -80,9 +80,14 @@ const EditProductModal = ({ editProduct, handleClose, handleEditProduct, handleE
             />
           </div>
 
-          <Button style={{backgroundColor: '#4CAF50'}} variant="success" onClick={handleEditProduct}>
-            Save Changes
-          </Button>
+          <div className="d-flex justify-content-between">
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button className="btn-success" onClick={handleEditProduct}>
+              Save Changes
+            </Button>
+          </div>
         </form>
       </Modal.Body>
     </Modal>

@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.login-signin-container {
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+}
+
+.login-background-video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -999;
+filter: brightness(60%);
+}
+
+.login-logo-container {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+opacity: 0;
+animation: login-fade-in 2s forwards;
+}
+
+.login-main-logo {
+width: 800px; 
+}
+
+@keyframes login-fade-in {
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+@keyframes login-fade-out {
+0% {
+opacity: 1;
+}
+100% {
+opacity: 0;
+}
+}
+
+.fade-out .login-logo-container {
+animation: login-fade-out 2s forwards 2s;
+}
+
+.login-white-container {
+position: absolute;
+top: 50%;
+left: 50%;
+width: 75%;
+height: 80%;
+background-color: #ffffff;
+z-index: 999; 
+transition: opacity 2s ease;
+transform: translate(-50%, -50%);
+
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.fade-in .login-white-container {
+opacity: 1;
+}
+
+.green-rectangle {
+width: 60%; 
+height: 100%; 
+background-color: #50653e;
+transform: translate(-35%);
+position: relative;
+z-index: 1;
+}
+
+.form-rectangle {
+width: 95%; 
+height: 50%; 
+background-color: transparent;
+transform: translate(5%, 50%);
+position: relative;
+z-index: 1;
+}
+
+.sign-in-text-form {
+font-family: 'Poppins', sans-serif;
+font-weight: bold;
+font-size: 50px; 
+color: rgb(255, 255, 255); 
+}
+
+.sign-in-text {
+position: absolute;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+font-family: 'Poppins', sans-serif;
+font-weight: bold;
+font-size: 60px; 
+color: white; 
+}
+
+.subtitle {
+position: absolute;
+top: 100px; 
+left: 50%;
+transform: translateX(-50%);
+font-family: 'Poppins', sans-serif;
+font-weight: bold;
+font-size: 18px; 
+color: white; 
+}
+
+.run-gif {
+position: absolute;
+width: 585px;
+height: auto;
+top: 50%;
+left: calc(65% + -90px);
+transform: translateY(-30%);
+}
+
+
+.left-arrow-button {
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+background-color: transparent;
+border: 2px solid black; 
+border-radius: 50%; 
+outline: none;
+cursor: pointer;
+z-index: 1000; 
+}
+
+.left-arrow-icon {
+font-size: 24px; 
+color: black; 
+transition: font-size 0.3s ease; 
+}
+
+
+.custom-input {
+width: 90%;
+padding: 10px;
+margin-bottom: 70px;
+border: 1px solid #ccc;
+border-radius: 5px;
+
+}
+
+.button-submit {
+width: 92%; 
+height: 50px; 
+border: 2px solid #000; 
+background-color: black; 
+color: white; 
+font-size: 16px; 
+text-align: center; 
+line-height: 50px; 
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.button-submit:hover {
+background-color: #194107;
+color: #fff; 
+}
+
+.error-alert {
+margin-top: 10px;
+padding: 10px;
+background-color: #f8d7da;
+color: #721c24; 
+width: 200px;
+border-radius: 5px;
+margin-bottom: 30px;
+text-align: center; 
+transform: translateX(119%);
+}

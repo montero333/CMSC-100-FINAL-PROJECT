@@ -1,0 +1,79 @@
+
+/* Custom Navbar styles */
+.custom-navbar {
+  background-color: #50653e; /* Green background */
+  height: 70px; /* Increased height for larger header */
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end; /* Push text to the right */
+}
+
+.navbar-nav {
+  margin-top: 15px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center; /* Center text vertically */
+  gap: 20px; /* Evenly space items */
+}
+
+.nav-link {
+  color: #fff !important; /* White text */
+  font-size: 1.2rem; /* Increase font size */
+  text-decoration: none; /* Remove underline */
+}
+
+.nav-link:hover {
+  text-decoration: none; /* No underline on hover */
+  color: #f8f9fa; /* Slightly lighter color on hover */
+}
+
+.logout-link {
+  background: none;
+  border: 2px solid #ffffff; /* Darker green border */
+  border-radius: 10px; /* Less circular border */
+  color: #fff !important; /* White text */
+  font-size: 1.2rem; /* Increase font size */
+  padding: 5px 15px; /* Adjust padding to center text */
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Center text vertically within button */
+  justify-content: center; /* Center text horizontally within button */
+}
+
+.logout-link:hover {
+  text-decoration: none; /* No underline on hover */
+  color: #000000; /* Slightly lighter color on hover */
+  background-color: #036c15; /* Darker green background on hover */
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.storeLogo {
+  position: absolute;
+  top: -5px; /* Adjust as necessary */
+  left: 20px; /* Adjust as necessary */
+  width: 4%;
+  z-index: 1000; /* Ensure the logo is above other elements */
+  filter: brightness(90%);
+  animation: fadeIn 1s ease forwards; /* Add fade-in animation */
+}
+
+.subtitle{
+  margin-top: -8%;
+}
