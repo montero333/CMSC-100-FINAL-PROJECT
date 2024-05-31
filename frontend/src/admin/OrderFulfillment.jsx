@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import './css/OrderFulfillment.css';
 
 const OrderFulfillment = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [productInfo, setProductInfo] = useState({});
-  const [activeTab, setActiveTab] = useState('pending');
-  const navigate = useNavigate();
+  // State variables
+  const [transactions, setTransactions] = useState([]); // stores transactions
+  const [productInfo, setProductInfo] = useState({}); // stores product information
+  const [activeTab, setActiveTab] = useState('pending'); // tracks the active tab
+  const navigate = useNavigate(); // navigation function
 
+
+  // fetch all transactions
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
@@ -26,6 +29,7 @@ const OrderFulfillment = () => {
     fetchTransaction();
   }, []);
 
+  // cancels a transaction by updating its status to cancelled (status: 2)
   const cancelTransaction = async (transactionId) => {
     try {
       const response = await axios.patch(`http://localhost:5000/api/transactions/${transactionId}`, {
@@ -46,6 +50,7 @@ const OrderFulfillment = () => {
     }
   };
 
+  // confirms a transaction by updating its status to confirmed (status: 1)
   const confirmTransaction = async (transactionId) => {
     try {
       const response = await axios.patch(`http://localhost:5000/api/transactions/${transactionId}`, {
@@ -59,6 +64,7 @@ const OrderFulfillment = () => {
           )
         );
 
+        // update product quantities after confirmation
         const productsToUpdate = transactions
           .find((transaction) => transaction.transactionId === transactionId)
           .products;
@@ -87,13 +93,16 @@ const OrderFulfillment = () => {
     }
   };
 
+  // fetch product information related to transaction and update
   useEffect(() => {
     const fetchTransactionProductInfo = async () => {
       try {
         const productInfoPromises = transactions.map(async (transaction) => {
+          // fetch user email used in transaction
           const userResponse = await axios.get(`http://localhost:5000/api/users/${transaction.userId}`);
           const userEmail = userResponse.data.userEmail;
 
+          // fetch product information 
           const productInfoArray = await Promise.all(
             transaction.products.map(async (product) => {
               const response = await axios.get(`http://localhost:5000/api/products/${product.ProductId}`);
@@ -109,6 +118,7 @@ const OrderFulfillment = () => {
             })
           );
 
+          // reduces product info array to a map for quick access
           const productInfoMap = productInfoArray.reduce((acc, info) => {
             if (info) {
               acc[info.id] = info.product;
@@ -116,6 +126,7 @@ const OrderFulfillment = () => {
             return acc;
           }, {});
 
+          // update transactions state with user email
           setTransactions((prevTransactions) =>
             prevTransactions.map((prevTransaction) =>
               prevTransaction.transactionId === transaction.transactionId
@@ -124,12 +135,14 @@ const OrderFulfillment = () => {
             )
           );
 
+          // update product info state with new product info
           setProductInfo((prevProductInfo) => ({
             ...prevProductInfo,
             ...productInfoMap,
           }));
         });
 
+        // wait for promises to resolve
         await Promise.all(productInfoPromises);
       } catch (error) {
         console.error('Error fetching product information:', error.message);
@@ -139,6 +152,7 @@ const OrderFulfillment = () => {
     fetchTransactionProductInfo();
   }, [transactions]);
 
+  // filters transaction based on status
   const confirmedTransactions = transactions.filter(transaction => transaction.status === 1);
   const pendingTransactions = transactions.filter(transaction => transaction.status === 0);
   const cancelledTransactions = transactions.filter(transaction => transaction.status === 2);

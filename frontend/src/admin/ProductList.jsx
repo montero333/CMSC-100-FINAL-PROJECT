@@ -176,25 +176,21 @@ const handleEditProduct = async () => {
   });
 
   return (
-    <>     
-          <Navbar bg="dark" variant="dark" className="prod-navbar">
-        <Container>
-          
-          <Navbar.Brand className="custom-prod-style">Product List</Navbar.Brand>
-          <Button variant="secondary" onClick={() => navigate('/admin-dashboard')} className="back-product-button">
-            Back to Dashboard
-          </Button>
-        </Container>
-      </Navbar>
+  <>     
+    <Navbar bg="dark" variant="dark" className="prod-navbar">
+      <Container>
+        <Navbar.Brand className="custom-prod-style">Product List</Navbar.Brand>
+        <Button variant="secondary" onClick={() => navigate('/admin-dashboard')} className="back-product-button">
+          Back to Dashboard
+        </Button>
+      </Container>
+    </Navbar>
         
     <div className="container mt-3">
       <div className="row">
       <div className="col-md-4">
           <div className="card">
             <div className="card-body">
-
-              
-              
               <form>
               <div className="add-product-container" style={{padding: '20px', marginBottom: '20px' }}>
               <h3 className="card-title-style">Add Product</h3>
@@ -282,14 +278,13 @@ const handleEditProduct = async () => {
                     className="form-control"
                   />
                 </div>
-
-
                 <button
                   type="button"
                   onClick={handleAddProduct}
                   className="btn btn-success add-product-btn">
                   Add Product
                 </button>
+
                 </div>
                     <Toast
                     onClose={() => setShowAddedToList(false)}
@@ -306,10 +301,8 @@ const handleEditProduct = async () => {
                       backgroundColor: '#4CAF50',
                       border: 'none',
                       boxShadow: 'none',  
-
                     }}
                     >
-                    
                     <Toast.Body style={{ fontFamily: 'Montserrat', color: 'white' }}>
                         <strong className="mr-auto" style={{ fontWeight: 'bold' }}>
                         SUCCESS: &nbsp;
@@ -327,39 +320,40 @@ const handleEditProduct = async () => {
           <div className="sorting-form mb-3 d-flex align-items-center justify-content-between" style={{ maxWidth: '900px' }}>
           <h3 className="product-list-title">List of Products</h3>
           <div className="d-flex justify-content-between align-items-center mb-3">
-  <div className="d-flex align-items-center">
-    <label htmlFor="sortCriteria" className="form-label me-2">
-      Sort by:
-    </label>
-    <select
-      id="sortCriteria"
-      value={sortCriteria}
-      onChange={handleSortCriteriaChange}
-      className="form-select me-2"
-      style={{ width: '150px' }}
-    >
-      <option value="name">Name</option>
-      <option value="price">Price</option>
-      <option value="type">Type</option>
-      <option value="quantity">Quantity</option>
-    </select>
+          <div className="d-flex align-items-center">
+            <label htmlFor="sortCriteria" className="form-label me-2">
+              Sort by:
+            </label>
+            <select
+              id="sortCriteria"
+              value={sortCriteria}
+              onChange={handleSortCriteriaChange}
+              className="form-select me-2"
+              style={{ width: '150px' }}
+            >
+              <option value="name">Name</option>
+              <option value="price">Price</option>
+              <option value="type">Type</option>
+              <option value="quantity">Quantity</option>
+            </select>
 
-    <label htmlFor="sortOrder" className="form-label me-2">
-      Order:
-    </label>
-    <select
-      id="sortOrder"
-      value={sortOrder}
-      onChange={handleSortOrderChange}
-      className="form-select"
-      style={{ width: '150px' }}
-    >
-      <option value="asc">Ascending</option>
-      <option value="desc">Descending</option>
-    </select>
-  </div>
-</div>
+            <label htmlFor="sortOrder" className="form-label me-2">
+              Order:
+            </label>
+            <select
+              id="sortOrder"
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className="form-select"
+              style={{ width: '150px' }}
+            >
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
           </div>
+        </div>
+
+        </div>
           {sortedProducts.map((product) => (
             <div key={product.id} className="card mb-3">
               <div className="row g-0">
@@ -381,27 +375,27 @@ const handleEditProduct = async () => {
                     </p>
                     <div className="d-flex mt-3">
                     <div className="edit-delete-buttons">
-  <button
-    onClick={() => handleEditButtonClick(product)}
-    className="btn btn-warning btn-sm me-2"
-  >
-    Edit
-  </button>
-  <button
-    onClick={() => handleDeleteProduct(product.id)}
-    className="btn btn-outline-danger btn-sm"
-  >
-    Delete
-  </button>
-</div>
-                    </div>
-                  </div>
-                </div>
+
+                <button
+                  onClick={() => handleEditButtonClick(product)}
+                  className="btn btn-warning btn-sm me-2"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDeleteProduct(product.id)}
+                  className="btn btn-outline-danger btn-sm"
+                >
+                  Delete
+                </button>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-
+      </div>
+    </div>
+  ))}
+  </div>
 
       </div>
 

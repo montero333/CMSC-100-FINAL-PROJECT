@@ -4,22 +4,24 @@ import { Container, Row, Col, Card, Button, Form, Navbar } from 'react-bootstrap
 import { useNavigate } from 'react-router-dom';
 import './CSS/UserAccount.css';
 
-const UserAccount = ({ onCustomerCountChange }) => {
-  const [users, setUsers] = useState([]);
-  const [customerCount, setCustomerCount] = useState(0);
-  const [selectedUserDetails, setSelectedUserDetails] = useState(null);
-  const [showUserDetails, setShowUserDetails] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
 
+const UserAccount = ({ onCustomerCountChange }) => {
+  // state variables
+  const [users, setUsers] = useState([]); // all users fetched 
+  const [customerCount, setCustomerCount] = useState(0); // count of customer users
+  const [selectedUserDetails, setSelectedUserDetails] = useState(null); // details of selected user
+  const [showUserDetails, setShowUserDetails] = useState(false); // flags to show user details
+  const [searchTerm, setSearchTerm] = useState(''); //search term used for filtering
+  const navigate = useNavigate();
+ 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/users');
-        const customerUsers = response.data.filter(user => user.UserType === 'Customer');
-        setUsers(customerUsers);
-        setCustomerCount(customerUsers.length);
-        onCustomerCountChange(customerUsers.length);
+        const response = await axios.get('http://localhost:5000/api/users'); // fetch users from API
+        const customerUsers = response.data.filter(user => user.UserType === 'Customer'); //filter customer user
+        setUsers(customerUsers); //set all customer user
+        setCustomerCount(customerUsers.length); //set count
+        onCustomerCountChange(customerUsers.length); //update count in parent component
       } catch (error) {
         console.error('Error fetching users:', error);
       }
@@ -28,15 +30,18 @@ const UserAccount = ({ onCustomerCountChange }) => {
     fetchUsers();
   }, [onCustomerCountChange]);
 
+  // hanldes view details
   const handleViewDetails = (user) => {
     setSelectedUserDetails(user);
     setShowUserDetails(true);
   };
 
+  //handle close button in details
   const handleCloseDetails = () => {
     setShowUserDetails(false);
   };
 
+  // filters users based on search
   const filteredUsers = users.filter(user => {
     const fullName = `${user.firstName || ''} ${user.middleInitial ? user.middleInitial + ' ' : ''}${user.lastName || ''}`;
     const userIdString = user.userId ? user.userId.toString() : '';

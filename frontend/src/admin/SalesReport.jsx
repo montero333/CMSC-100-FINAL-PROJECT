@@ -3,25 +3,29 @@ import { useNavigate } from 'react-router-dom';
 import './css/SalesReport.css';
 
 const SalesReports = () => {
-  const [weeklySales, setWeeklySales] = useState([]);
-  const [monthlySales, setMonthlySales] = useState([]);
-  const [annualSales, setAnnualSales] = useState([]);
-  const [productSales, setProductSales] = useState([]);
-  const [activeTab, setActiveTab] = useState('weekly');
-  const navigate = useNavigate();
+  // State variables
+  const [weeklySales, setWeeklySales] = useState([]); // for weekly sales data
+  const [monthlySales, setMonthlySales] = useState([]); // for monthly sales data
+  const [annualSales, setAnnualSales] = useState([]); // for annual sales data
+  const [productSales, setProductSales] = useState([]); // for product sales data
+  const [activeTab, setActiveTab] = useState('weekly'); // manages active tab
+  const navigate = useNavigate(); 
 
+  // fetch sales data
   useEffect(() => {
-    fetchSalesData('weekly');
+    fetchSalesData('weekly'); 
     fetchSalesData('monthly');
-    fetchSalesData('annual');
-    fetchProductSales();
+    fetchSalesData('annual'); 
+    fetchProductSales(); // Fetch product sales data
   }, []);
 
+  // Function to fetch sales data based on duration (weekly, monthly, annual)
   const fetchSalesData = async (duration) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/sales/${duration}`);
-      const data = await response.json();
+      const response = await fetch(`http://localhost:5000/api/sales/${duration}`); // Fetch data from API
+      const data = await response.json(); // Parse response to JSON
 
+      // Update state based on duration
       switch (duration) {
         case 'weekly':
           setWeeklySales(data);
@@ -36,17 +40,19 @@ const SalesReports = () => {
           break;
       }
     } catch (error) {
-      console.error('Error fetching sales data:', error);
+      console.error('Error fetching sales data:', error); // error if fetching data fails
     }
   };
 
+  // fetches product sales data
   const fetchProductSales = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/transactions');
-      const transactions = await response.json();
+      const response = await fetch('http://localhost:5000/api/transactions'); // fetch transactions data
+      const transactions = await response.json(); // parse response to JSON
 
+      // process transactions to get product sales data
       const productSalesData = transactions
-        .filter(transaction => transaction.status === 1)
+        .filter(transaction => transaction.status === 1) // filters confirmed transactions
         .reduce((acc, transaction) => {
           transaction.products.forEach((product) => {
             const existingProduct = acc.find((p) => p.productId === product.ProductId);
@@ -64,6 +70,7 @@ const SalesReports = () => {
           return acc;
         }, []);
 
+      // fetch product details for each product in productSalesData
       const productPromises = productSalesData.map(async (product) => {
         const productResponse = await fetch(`http://localhost:5000/api/products/${product.productId}`);
         const productData = await productResponse.json();
@@ -75,26 +82,30 @@ const SalesReports = () => {
         };
       });
 
+      // await all product promises and update product sales state
       const productDetails = await Promise.all(productPromises);
       setProductSales(productDetails);
     } catch (error) {
-      console.error('Error fetching product sales data:', error);
+      console.error('Error fetching product sales data:', error); // error if product sales fetching fails
     }
   };
 
+  // hanldes tab changes
   const handleDurationChange = (duration) => {
-    setActiveTab(duration);
-    fetchSalesData(duration);
+    setActiveTab(duration); // Update active tab state
+    fetchSalesData(duration); // fetch sales data for the selected duration
   };
 
+  // calculates total sales
   const calculateTotalSales = () => {
     const totalSales = productSales.reduce((total, product) => {
-      return total + product.price * product.quantity;
+      return total + product.price * product.quantity; 
     }, 0);
 
-    return parseFloat(totalSales.toFixed(2));
+    return parseFloat(totalSales.toFixed(2)); // returns formatted total sales 
   };
 
+  // JSX content
   return (
     <div className="sales-report-container">
       <div className="menu-bar">
