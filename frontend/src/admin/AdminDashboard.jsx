@@ -56,6 +56,7 @@ const AdminDashboard = () => {
     fetchDashboardData();
   }, []); // Runs only once after initial render
 
+  //start of styling for the admin dashboard that is implemented with css
   return (
     <div className="admin-dashboard">
       {/* Navbar component with a custom styling */}
@@ -66,7 +67,7 @@ const AdminDashboard = () => {
           <Button variant="secondary" onClick={() => navigate('/')} className="logout-button">Logout</Button>
         </Container>
       </Navbar>
-
+      
       <Container className="main-content">
         <div className="grey-box">
           {/* Navigation buttons for different admin sections */}
