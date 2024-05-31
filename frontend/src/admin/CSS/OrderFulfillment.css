@@ -1,187 +1,188 @@
-.om-order-fulfillment-container {
-  padding: 20px;
-  font-family: Montserrat, sans-serif;
-  background-color: #789176;
-}
+.order-fulfillment-container {
+    padding: 20px;
+    font-family: Montserrat, sans-serif;
+    background-color: #789176;
+  }
+  
+  .menu-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 
-.om-menu-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
+  }
+  
+  .page-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .back-to-dashboard-btn {
+    background-color: #2a2f2b;
+    color: white;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .back-to-dashboard-btn:hover {
+    background-color: #486551;
+  }
+  
+  .order-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    background-color: #e0e0e0;
+    padding: 100px 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 50px;
+    transition: background-color 0.3s ease;
+    margin:20px;
+    text-align: left;
+  }
+  
+  .tab.active {
+    background-color: #1d473e;
+    color: white;
+  }
+  
+  .tab:hover {
+    background-color: #696969;
+  }
+  
+  .order-tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    color:#000000;
+    background-color: #edecec;
+    text-align: center;
+  }
 
-.om-page-title {
-  font-size: 40px;
-  font-weight: bold;
-  margin: 0;
-}
+  .order-tab-content-title {
+    color:#ffffff;
+    background-color: rgb(52, 51, 51);
+    border-radius: 5px;
+    
+  }
+  
+  .order-card {
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-card-header {
+    background-color: #cdcdcd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    size: 40px !important;
+  }
 
-.om-back-to-dashboard-btn {
-  background-color: #2a2f2b;
-  color: white;
-  padding: 20px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-}
+  .order-card-header-fulfill {
+    background-color: #cdcdcd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    size: 40px;
+  }
+  
+  .order-card-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-bottom: 90px;
+  }
+  
+  .product-info {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    width:800px;
+    height:100px;
+    text-align: left;
+  }
+  
+  .product-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  
+  .order-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .total-price {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .confirm-btn, .cancel-btn, .confirmed-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .confirm-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #218838;
+  }
+  
+  .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .confirmed-btn {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .confirmed-btn:disabled {
+    cursor: not-allowed;
+  }
 
-.om-back-to-dashboard-btn:hover {
-  background-color: #486551;
-}
-
-.om-order-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.om-tab {
-  background-color: #e0e0e0;
-  padding: 100px 80px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 50px;
-  transition: background-color 0.3s ease;
-  margin: 20px;
-  text-align: left;
-}
-
-.om-tab.active {
-  background-color: #1d473e;
-  color: white;
-}
-
-.om-tab:hover {
-  background-color: #696969;
-}
-
-.om-order-tab-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border-radius: 5px;
-  color: #000000;
-  background-color: #edecec;
-  text-align: center;
-}
-
-.om-order-tab-content-title {
-  color: #ffffff;
-  background-color: rgb(52, 51, 51);
-  border-radius: 5px;
-}
-
-.om-order-card {
-  border: 1px solid #d0d0d0;
-  border-radius: 5px;
-  padding: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.om-order-card-header {
-  background-color: #cdcdcd;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  size: 40px !important;
-}
-
-.om-order-card-header-fulfill {
-  background-color: #cdcdcd;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  size: 40px;
-}
-
-.om-order-card-body {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding-bottom: 90px;
-}
-
-.om-product-info {
-  display: flex;
-  gap: 15px;
-  border-bottom: 1px solid #d0d0d0;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  width: 800px;
-  height: 100px;
-  text-align: left;
-}
-
-.om-product-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 5px;
-  object-fit: cover;
-}
-
-.om-order-card-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.om-total-price {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.om-action-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.om-confirm-btn,
-.om-cancel-btn,
-.om-confirmed-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.om-confirm-btn {
-  background-color: #28a745;
-  color: white;
-}
-
-.om-confirm-btn:hover {
-  background-color: #218838;
-}
-
-.om-cancel-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
-.om-cancel-btn:hover {
-  background-color: #c82333;
-}
-
-.om-confirmed-btn {
-  background-color: #6c757d;
-  color: white;
-}
-
-.om-confirmed-btn:disabled {
-  cursor: not-allowed;
-}
-
-.om-product-name-order {
-  font-size: 30px !important;
-  font-weight: bold;
-  margin: 0;
-  padding: 5px 0;
-  color: #333;
-  line-height: 1.5;
-}
+  .product-name-order {
+    font-size: 30px !important; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin: 0; /* Remove default margin */
+    padding: 5px 0; /* Add padding if needed */
+    color: #333; /* Set the text color */
+    line-height: 1.5; /* Adjust the line height for better readability */
+  }
+  
