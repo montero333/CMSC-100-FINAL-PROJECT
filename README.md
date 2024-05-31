@@ -4,7 +4,7 @@
 **DEV 1:** REYES, Erix Laud  
 **DEV 2:** SILAPAN, Francheska Marie  
 **DEV 3:** MONTERO, Nico Antiono  
-**DEV 4:** FERMO, Jessela  
+**DEV 4:** FERMO, Jesella  
 
 **Section:** U-V4L  
 
