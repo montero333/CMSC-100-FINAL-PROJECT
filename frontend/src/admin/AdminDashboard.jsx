@@ -49,6 +49,7 @@ const AdminDashboard = () => {
     fetchDashboardData();
   }, []);
 
+  //start of styling for the admin dashboard that is implemented with css
   return (
     <div className="admin-dashboard-container">
       <Navbar className="admin-dashboard-navbar">
@@ -63,6 +64,7 @@ const AdminDashboard = () => {
           <div className="admin-dashboard-nav-buttons">
             <Button className="admin-dashboard-button" onClick={() => navigate('/admin-users')}>
               <div className="admin-dashboard-button-content">
+                
                 <span className="button-text">User Account</span>
                 <FaUser className="admin-dashboard-button-icon" />
               </div>

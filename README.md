@@ -1,10 +1,11 @@
 # Final Project: Alay-ay E-Commerce Website
 
 **Collaborators:**  
-**DEV 1:** REYES, Erix Laud  
+**DEV 1:** MONTERO, Nico Antiono  
 **DEV 2:** SILAPAN, Francheska Marie  
-**DEV 3:** MONTERO, Nico Antiono  
-**DEV 4:** FERMO, Jessela  
+**DEV 3:** REYES, Erix Laud
+
+**DEV 4:** FERMO, Jesella  
 
 **Section:** U-V4L  
 
@@ -86,11 +87,40 @@ Mainly used for User Design:
 - UserContext.jsx 
 
 **ADMIN**
-- palagay here jess
+- SRC/assets - specific assets folder for images used for admin pages
+- Admin Dashboard (CSS and JSX) - to be able to access and navigate to the other admin pages 
+- Order Fulfillment (CSS AND JSX) - access orders to confirm or cancel
+- Sales Reports (CSS AND JSX) - view Weekly, Monthly, Annual, and Product Sales
+- Product Listing (CSS AND JSX) - allows editing, deleting, and adding products
+- Edit Product (CSS AND JSX) - works with product listing for editing product
+- User Account (CSS AND JSX) - view and search user accounts details
+
+
 
 ### BACKEND
 
-for nico and cheska
+Developed using Express.js and MongoDB, provides the API endpoints for managing products, users, transactions and more.
+
+**Product**
+- POST /api/products: For adding a new product
+- GET /api/products: For fetching all products
+- GET /api/products/:productId: For fetching a product by ID
+- PUT /api/products/:productId: For updating a product by ID
+- PUT /api/products/delete/:productId: For deleting a product
+
+**User**
+- POST /api/signup: Sign up a new user
+- POST /api/signin: Sign in an existing user
+- GET /api/users: Fetch all users (Admin access only)
+- GET /api/users/:userId: Fetch a user by ID
+- PATCH /api/user/:userId: Update user details (username, password)
+
+**Transaction**
+- POST /api/checkout: for checking out and creating a new transaction
+- GET /api/transactions: for fetching all transactions
+- PATCH /api/transactions/:transactionId: for updating transaction status
+- PATCH /api/transactions/cancel/:transactionId: used to cancel transactions by transaction ID
+- GET /api/sales/:duration: for fetching sales data for weekly, monthly, or annual periods
 
 ### MORE REPOSITORIES (COMMIT VIEWING)
 
