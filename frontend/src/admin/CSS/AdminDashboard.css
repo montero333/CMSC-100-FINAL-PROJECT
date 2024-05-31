@@ -1,60 +1,59 @@
-.admin-dashboard {
+.admin-dashboard-container {
   font-family: 'Montserrat', sans-serif;
   background-color: #f5f5f5;
   min-height: 100vh;
-  padding: 0; /* Ensure no padding around the dashboard */
-  margin: 0; /* Ensure no margin around the dashboard */
+  padding: 0;
+  margin: 0;
 }
 
-.admin-dashboard .navbar-custom {
+.admin-dashboard-navbar {
   background-color: #789176;
-  padding: 20px; /* Ensure no padding around the navbar */
+  padding: 20px;
 }
 
-.admin-dashboard .navbar-container {
+.admin-dashboard-navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 }
 
-.admin-dashboard .navbar-brand-custom {
+.admin-dashboard-brand {
   color: #ffffff;
   font-size: 2.5rem;
   text-decoration: none;
   font-weight: bold;
 }
 
-.admin-dashboard .logout-button {
+.admin-dashboard-logout-button {
   color: #ffffff;
   background-color: #343a40;
   border: none;
   padding: 20px 50px;
   margin-left: 830px;
-  font-size: 2rem; /* Add this line to set the text size */
+  font-size: 2rem;
 }
 
-.admin-dashboard .main-content {
+.admin-dashboard-main-content {
   display: flex;
   justify-content: center;
   margin-top: 0px;
 }
 
-.admin-dashboard .grey-box {
+.admin-dashboard-grey-box {
   background-color: #e0e0e0;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 90%; /* Adjust the width as needed */
+  width: 90%;
   margin-left: 50px;
   margin-right: 50px;
-
 }
 
-.admin-dashboard .logout-button:hover {
+.admin-dashboard-logout-button:hover {
   background-color: #23272b;
 }
 
-.admin-dashboard .nav-buttons {
+.admin-dashboard-nav-buttons {
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -62,7 +61,7 @@
   margin-bottom: 60px;
 }
 
-.admin-dashboard .custom-button {
+.admin-dashboard-button {
   background-color: #b9b9b9;
   border: none;
   padding: 40px;
@@ -72,21 +71,21 @@
   color: #636363;
 }
 
-.admin-dashboard .custom-button .button-content {
+.admin-dashboard-button-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.admin-dashboard .custom-button .button-content .button-icon {
+.admin-dashboard-button-icon {
   font-size: 1.5rem;
 }
 
-.admin-dashboard .custom-button:hover {
+.admin-dashboard-button:hover {
   background-color: #d3d3d3;
 }
 
-.admin-dashboard .dashboard-tile {
+.admin-dashboard-tile {
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
@@ -98,37 +97,37 @@
   margin-bottom: 50px;
 }
 
-.admin-dashboard .dashboard-tile .tile-body {
+.admin-dashboard-tile-body {
   display: flex;
   align-items: center;
 }
 
-.admin-dashboard .dashboard-tile .tile-text {
+.admin-dashboard-tile-text {
   padding: 20px;
   flex: 1;
 }
 
-.admin-dashboard .dashboard-tile .tile-image {
+.admin-dashboard-tile-image {
   width: 80%;
-  height: 221px; /* Set a fixed height to ensure the image container is visible */
+  height: 221px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.admin-dashboard .card-title {
+.admin-dashboard-card-title {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.admin-dashboard .card-text h1 {
+.admin-dashboard-card-text h1 {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 0;
 }
 
-.admin-dashboard .card-text h5 {
+.admin-dashboard-card-text h5 {
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0;

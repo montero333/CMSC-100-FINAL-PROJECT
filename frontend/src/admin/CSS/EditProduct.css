@@ -19,7 +19,7 @@
   font-family: 'Montserrat', sans-serif !important;
 }
 
-.edit-product-form{
+.edit-product-form {
   margin-bottom: 20px;
 }
 
@@ -41,39 +41,25 @@
   border-color: transparent;
 }
 
-.modal-title {
-  color: #000000; /* Text color */
-  font-size: 1.5rem; /* Font size */
-  font-weight: bold; /* Font weight */
-  margin-bottom: 15px; /* Bottom margin */
+.edit-product-form .form-label {
+  padding: 1%;
   font-family: 'Montserrat', sans-serif;
-  padding:1%;
+  color: #333;
 }
 
+.edit-product-buttons {
+  margin-top: 20px;
+}
 
-.d-flex.justify-content-between .btn-secondary {
-  /* Styling for the Close button */
-  background-color: #6c757d; /* Button background color */
-  color: #ffffff; /* Text color */
+.edit-product-buttons .btn-secondary {
+  background-color: #6c757d;
+  color: #ffffff;
   border-color: transparent;
-  font-weight: bold; /* Bold text */
+  font-weight: bold;
   margin-left: 1%;
 }
 
-.d-flex.justify-content-between .btn-secondary:hover {
-  /* Hover effect for the Close button */
-  background-color: #5a6268; /* Darker background color */
+.edit-product-buttons .btn-secondary:hover {
+  background-color: #5a6268;
   border-color: transparent;
-}
-
-.edit-product-form .form-label {
-  /* Styling for the label */
-  padding: 1%;
-  font-family: 'Montserrat', sans-serif;
-  color: #333; /* Example text color */
-}
-
-/* Adjust the margin or padding as needed */
-.d-flex.justify-content-between {
-  margin-top: 20px; /* Example margin for space between buttons and form */
 }

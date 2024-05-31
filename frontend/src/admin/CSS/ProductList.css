@@ -1,8 +1,8 @@
-.product-listing {
+.pl-product-listing {
   font-family: 'Montserrat', sans-serif;
 }
 
-.product-listing .card {
+.pl-product-listing .pl-card {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease-in-out;
   padding-left: 1%;
@@ -10,48 +10,45 @@
   margin-bottom: 5%;
 }
 
-.product-listing .card:hover {
+.pl-product-listing .pl-card:hover {
   box-shadow: 0 4px 8px rgba(113, 113, 113, 0.2);
   color:#7e7f7e;
-  
 }
 
-.product-listing .card-body {
+.pl-product-listing .pl-card-body {
   margin-top: -3%;
   padding: 10px;
   background-color: #d7d7d7; /* Change this color to the desired background color */
   color: #000000; /* Change this color to the desired text color */
 }
 
-.product-listing .card-title {
+.pl-product-listing .pl-card-title {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.product-listing .card-text {
+.pl-product-listing .pl-card-text {
   font-size: 1rem;
   font-weight: bold;
 }
 
-.product-listing .card-text span {
+.pl-product-listing .pl-card-text span {
   margin-right: 10px;
 }
 
-.product-listing .img-fluid {
+.pl-product-listing .pl-img-fluid {
   border-radius: 5px;
   margin:0px;
-
-  
 }
 
-.product-listing .sorting-form {
+.pl-product-listing .pl-sorting-form {
   margin-bottom: 20px;
   margin-left: 1%;
   font-weight: bold;
 }
 
-.product-listing .form-select {
+.pl-product-listing .pl-form-select {
   font-size: 0.875rem;
   font-weight: bold;
   border-radius: 5px;
@@ -63,43 +60,42 @@
   border-color: transparent;
 }
 
-.product-listing .edit-delete-buttons .btn-warning,
-.product-listing .edit-delete-buttons .btn-outline-danger {
+.pl-product-listing .pl-edit-delete-buttons .btn-warning,
+.pl-product-listing .pl-edit-delete-buttons .btn-outline-danger {
   padding: 10px 20px; /* Adjust padding as needed */
   min-width: 90px; /* Adjust width as needed */
   font-size: 20px; /* Adjust font size as needed */
 }
 
-.product-listing .edit-delete-buttons .btn-warning {
+.pl-product-listing .pl-edit-delete-buttons .btn-warning {
   margin-right: 15px; /* Adjust the margin as needed */
   margin-left: 0.25%;
-
 }
 
-.product-listing .btn-warning {
+.pl-product-listing .pl-btn-warning {
   background-color: #496444;
   border-color: transparent;
   color: #ffffff;  
   font-weight: bold;
 }
 
-.product-listing .btn-warning:hover {
+.pl-product-listing .pl-btn-warning:hover {
   background-color: #28422d;
   border-color: transparent;
 }
 
-.product-listing .btn-outline-danger {
+.pl-product-listing .pl-btn-outline-danger {
   border-color: transparent;
   background-color: #9b9a96;
   color: #ffffff;
   font-weight: bold;
 }
 
-.product-listing .btn-outline-danger:hover {
+.pl-product-listing .pl-btn-outline-danger:hover {
   background-color: #565656;
 }
 
-.navbar {
+.pl-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,11 +104,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.prod-navbar {
+.pl-prod-navbar {
   color: #3E5C47;
 }
 
-.back-product-button {
+.pl-back-product-button {
   margin: 0px;
   padding: 20px 20px;
   background-color: #373636;
@@ -127,11 +123,11 @@
   font-weight: bold;
 }
 
-.back-product-button:hover {
+.pl-back-product-button:hover {
   background-color: #bfbfbf;
 }
 
-.custom-prod-style {
+.pl-custom-prod-style {
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -141,12 +137,12 @@
   color: #ffffff;
 }
 
-.mb-3 {
+.pl-mb-3 {
   color: #000000;
   font-size: 25px;
 }
 
-.add-product-container {
+.pl-add-product-container {
   background-color: rgb(225, 225, 225);
   padding: 20px;
   margin-bottom: 20px;
@@ -154,51 +150,51 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.add-product-container .mb-3 {
+.pl-add-product-container .pl-mb-3 {
   display: flex;
   width: 1000px;
   padding-bottom: 10px;
 }
 
-.add-product-container .form-label {
+.pl-add-product-container .pl-form-label {
   width: 200px; /* Fixed width for labels */
   margin-right: 10px; /* Add spacing between label and input field */
   border: none;
 }
 
-.add-product-container .form-control,
-.add-product-container .form-select {
+.pl-add-product-container .pl-form-control,
+.pl-add-product-container .pl-form-select {
   flex: 1; /* Take remaining space */
   border: none;
 }
 
-.form-control {
+.pl-form-control {
   margin-left: 10px;
   border-radius: 5px; /* Rounded corners */
   color: #000000; /* Border color */
 }
 
-.form-select {
+.pl-form-select {
   margin-left: 10px;
   border-radius: 5px; /* Rounded corners */
   color: #000000; /* Border color */
 }
 
-.form-control.textarea {
+.pl-form-control.textarea {
   margin-left: 10px;
   min-height: 100px; /* Set minimum height for textarea */
   resize: none; /* Disable resizing */
   border-radius: 0; /* Rounded corners */
-  color: #d5d5d5; /* Border colo  r */
+  color: #d5d5d5; /* Border color */
 }
 
-.btn {
+.pl-btn {
   border-radius: 5px; /* Rounded corners */
   size: 100px;
   padding: 20px;
 }
 
-.add-product-btn {
+.pl-add-product-btn {
   background-color: #49544a;
   border: none;
   color: white;
@@ -216,11 +212,11 @@
   font-family: Arial, sans-serif;
 }
 
-.add-product-btn:hover {
+.pl-add-product-btn:hover {
   background-color: #b3c0b4; /* Darker green for hover effect */
 }
 
-.product-list-title {
+.pl-product-list-title {
   font-size: 2rem; /* Adjust the font size */
   font-weight: bold; /* Make the text bold */
   color: #000000; /* Change the color */

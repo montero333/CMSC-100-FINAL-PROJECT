@@ -1,7 +1,12 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import StoreHeader from './StoreHeader.jsx';
 import { useUser } from '../components/UserContext.jsx';
+import './AccountProfile.css';
+import videoBackground from './acc_bg.mp4'; // Import the video file
+import logo from './blank_pfp.png';
+
 
 const AccountProfile = () => {
   const { userId, setUserId } = useUser();
@@ -14,6 +19,7 @@ const AccountProfile = () => {
   const [productInfo, setProductInfo] = useState({});
   const [error, setError] = useState('');
   const [cart, setCart] = useState([]);
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   const handleCheckout = () => {
     console.log('Checkout clicked!');
@@ -200,86 +206,80 @@ const AccountProfile = () => {
     return acc;
   }, {});
 
+  const openModal = (transaction) => {
+    setSelectedTransaction(transaction);
+    document.getElementById('transactionModal').style.display = 'flex';
+  };
+
+  const closeModal = () => {
+    setSelectedTransaction(null);
+    document.getElementById('transactionModal').style.display = 'none';
+  };
+
   return (
-    <>
-      <StoreHeader cart={cart} setCart={setCart} handleCheckout={handleCheckout} removeFromCart = {removeFromCart} />
-      <div className="container mt-5" style={{marginBottom: '50px'}}>
-        <div className="card p-2">
-          <div className="card-body">
-          <h2 className="card-title" style={{ color: '#4CAF50', fontWeight: 'bold' }}>
-               Hi, {userData && `${userData.firstName} ${userData.lastName}!`}
-            </h2>
+    <div className="container">
+      <div className="content">
+        <StoreHeader cart={cart} setCart={setCart} handleCheckout={handleCheckout} removeFromCart={removeFromCart} hideCartButton={true} />
+        <video autoPlay loop muted className="video-background">
+          <source src={videoBackground} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h1 className='welc-text'> WELCOME </h1>
+        <h2 className="name-text">
+          {userData && `${userData.firstName} ${userData.lastName}`}
+        </h2>
+        <div className="left-container">
+          <div className="user-info-container">
             {userData ? (
-                <div>
-                {/* User Information */}
-                <div className="mb-4 mt-4">
-                  <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
-                    <label className="text-muted mb-2">User Type</label>
-                    <p className="card-text">{userData.UserType}</p>
-                  </div>
+              <div>
+                <p className="in-text">YOU ARE</p>
+                <p className="ut-text">{userData.UserType}</p>
+                <p className="ut-subtext">{userData.userId}</p>
+                <img src={logo} alt="Logo" className="accLogo" />
+                <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
+                  <label className="user-info-label text-muted mb-0">Username</label>
+                  {editUsername ? (
+                    <input
+                      type="text"
+                      value={newUsername}
+                      onChange={(e) => setNewUsername(e.target.value)}
+                      className="user-info-input form-control"
+                      placeholder="Enter new username"
+                    />
+                  ) : (
+                    <p className="user-info-value card-text">{userData.userName}</p>
+                  )}
+                  <button
+                    onClick={handleEditUsername}
+                    className={`user-info-button btn btn-${editUsername ? 'edit' : 'save'}`}
+                  >
+                    {editUsername ? 'Cancel' : 'Edit'}
+                  </button>
                 </div>
-  
                 <div className="mb-3">
                   <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
-                    <label className="text-muted mb-2">User ID</label>
-                    <p className="card-text font-weight-bold">{userData.userId}</p>
-                  </div>
-                </div>
-  
-                <div className="mb-3">
-                  <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
-                    <label className="text-muted mb-0" style={{backgroundColor: '#e6e6e5', padding: '10px 12px', borderRadius: '10px 0px 0px 10px'}}>Username</label>
-                    {editUsername ? (
-                      <input
-                        type="text"
-                        value={newUsername}
-                        onChange={(e) => setNewUsername(e.target.value)}
-                        className="form-control"
-                        placeholder="Enter new username"
-                        style={{ borderRadius: '0px', padding: '9px 12px' }}
-                      />
-                    ) : (
-                      <p className="card-text">{userData.UserName}</p>
-                    )}
-                    <button
-                      onClick={handleEditUsername}
-                      className={`btn btn-${editUsername}`}
-                      style={{padding: '9px 12px', backgroundColor: '#bdbbb9',  borderRadius: '0px 10px 10px 0px'  }}
-                      >
-                      {editUsername ? 'Cancel' : 'Edit'}
-                    </button>
-                  </div>
-                </div>
-  
-                <div className="mb-3">
-                  <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
-                    <label className="text-muted mb-0"  style={{backgroundColor: '#e6e6e5', padding: '10px 12px', borderRadius: '10px 0px 0px 10px'}}>Password</label>
+                    <label className="user-info-label text-muted mb-0" style={{ backgroundColor: '#e6e6e5', padding: '10px 12px', borderRadius: '10px 0px 0px 10px' }}>Password</label>
                     {editPassword ? (
                       <input
                         type="password"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        className="form-control"
+                        className="user-info-input form-control"
                         placeholder="Enter new password"
-                        style={{ borderRadius: '0px', padding: '9px 12px' }}
-
                       />
                     ) : (
-                      <p className="card-text">********</p>
+                      <p className="user-info-value card-text"></p>
                     )}
                     <button
-                        onClick={handleEditPassword}
-                        className={`btn btn-${editPassword}`}
-                        style={{ padding: '9px 12px', backgroundColor: '#bdbbb9', borderRadius: '0px 10px 10px 0px' }}
-                        >
+                      onClick={handleEditPassword}
+                      className={`user-info-button btn btn-${editPassword ? 'edit' : 'save'}`}
+                    >
                       {editPassword ? 'Cancel' : 'Edit'}
                     </button>
                   </div>
                 </div>
-  
-                {/* Save Changes Button */}
                 {(editUsername || editPassword) && (
-                  <button onClick={handleSaveChanges} className="btn mt-3" style={{backgroundColor: '#4CAF50', color: 'white'}}>
+                  <button onClick={handleSaveChanges} className="user-info-button btn mt-3">
                     Save Changes
                   </button>
                 )}
@@ -288,78 +288,67 @@ const AccountProfile = () => {
               <p>Loading user data...</p>
             )}
           </div>
-          {/* Render purchase history */}
-          <div className="p-3">
-            <h3 className="text-warning">Purchase History</h3>
-            {Object.entries(groupedTransactions).map(([transactionId, group]) => (
-            <div key={transactionId} className="card mb-3">
-              <div className="card-header text-muted">
-              <h6 className="mb-0">
-                Transaction ID: {transactionId} | Status:&nbsp;
-                <span style={{ fontWeight: 'bold', fontFamily: 'Montserrat', color: group[0].status === 0 ? 'yellow' : (group.some((transaction) => transaction.status === 1) ? 'green' : 'red') }}>
-                  {group[0].status === 0 ? 'Pending' : (group.some((transaction) => transaction.status === 1) ? 'Confirmed' : 'Cancelled')}
-                </span>
-              </h6>
-              </div>
-              <div className="card-body">
-                {group.map((transaction) => (
-                  <div key={transaction.transactionId} className="row mb-0">
-                    {transaction.products.map((product) => (
-                      <div key={product.ProductId} className="col-12 mb-3">
-                        <div className="d-flex align-items-center">
-                          <img
-                            src={productInfo[product.ProductId]?.imageUrl || 'placeholder-image-url'}
-                            alt={productInfo[product.ProductId]?.name || 'Product Image'}
-                            className="img-fluid mr-3"
-                            style={{ width: '70px', height: '70px', marginRight: '15px' }}
-                          />
-                          <div>
-                            <h6><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
-                            <p>Quantity: {product.quantity}</p>
-                          </div>
-                        </div>
+        </div>
+        <div className="right-container">
+          <h2 className='transac-text'>MY TRANSACTIONS</h2>
+          {Object.entries(groupedTransactions).map(([transactionId, group]) => (
+            <div key={transactionId} className="transaction-summary" onClick={() => openModal(group)}>
+              <span>Transaction ID: {transactionId}</span>
+              <span>Status: {group[0].status === 0 ? 'Pending' : (group.some((transaction) => transaction.status === 1) ? 'Confirmed' : 'Cancelled')}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {selectedTransaction && (
+        <div id="transactionModal" className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>&times;</span>
+            {selectedTransaction.map((transaction) => (
+              <div key={transaction.transactionId} className="row mb-0">
+                {transaction.products.map((product) => (
+                  <div key={product.ProductId} className="col-12 mb-3">
+                    <div className="d-flex align-items-center">
+                      <img
+                        src={productInfo[product.ProductId]?.imageUrl || 'placeholder-image-url'}
+                        alt={productInfo[product.ProductId]?.name || 'Product Image'}
+                        className="img-fluid mr-3"
+                        style={{ width: '70px', height: '70px', marginRight: '15px' }}
+                      />
+                      <div>
+                        <h6><b>{productInfo[product.ProductId]?.name || 'Product Name'}</b></h6>
+                        <p>Quantity: {product.quantity}</p>
                       </div>
-                    ))}
+                    </div>
                   </div>
                 ))}
               </div>
-              <div className="card-footer text-muted">
-            <div className="row">
-              <div className="col-md-8 d-flex flex-column align-items-left">
-                <p>Date and Time: {group[0].date}, {group[0].time} | <em>Mode of Payment: Cash on Delivery</em></p>
-              </div>
-              <div className="col-md-2 d-flex flex-column align-items-left">
-                <p style={{fontWeight: 'bold', fontFamily: 'Montserrat'}}>Total Price: ₱{group[0].totalPrice}</p>
-              </div>
-              <div className="col-md-2 d-flex flex-column align-items-left">
-                {/* Render a single cancel button per transaction */}
-                {group.some((transaction) => transaction.status === 0) ? (
-                  <button
-                    onClick={() => cancelTransaction(transactionId)}
-                    className="btn btn-danger"
-                  >
-                    Cancel
-                  </button>
-                ) : (
-                  <button
-                    className="btn btn-secondary"
-                    disabled
-                  >
-                    Cancel
-                  </button>
-                )}
-              </div>
+            ))}
+            <div className="text-muted">
+              <p>Date and Time: {selectedTransaction[0].date}, {selectedTransaction[0].time} | <em>Mode of Payment: Cash on Delivery</em></p>
+              <p style={{ fontWeight: 'bold', fontFamily: 'Montserrat' }}>Total Price: ₱{selectedTransaction[0].totalPrice}</p>
+              {selectedTransaction.some((transaction) => transaction.status === 0) ? (
+                <button
+                  onClick={() => cancelTransaction(selectedTransaction[0].transactionId)}
+                  className="btn btn-danger"
+                >
+                  Cancel
+                </button>
+              ) : (
+                <button
+                  className="btn btn-secondary"
+                  disabled
+                >
+                  Cancel
+                </button>
+              )}
             </div>
-          </div>
-
-            </div>
-          ))}   
           </div>
         </div>
-      
-      </div>
-    </>
+      )}
+    </div>
   );
+  
 };
+
 
 export default AccountProfile;
