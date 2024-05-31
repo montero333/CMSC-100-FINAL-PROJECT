@@ -90,7 +90,28 @@ Mainly used for User Design:
 
 ### BACKEND
 
-for nico and cheska
+Developed using Express.js and MongoDB, provides the API endpoints for managing products, users, transactions and more.
+
+**Product**
+- POST /api/products: For adding a new product
+- GET /api/products: For fetching all products
+- GET /api/products/:productId: For fetching a product by ID
+- PUT /api/products/:productId: For updating a product by ID
+- PUT /api/products/delete/:productId: For deleting a product
+
+**User**
+- POST /api/signup: Sign up a new user
+- POST /api/signin: Sign in an existing user
+- GET /api/users: Fetch all users (Admin access only)
+- GET /api/users/:userId: Fetch a user by ID
+- PATCH /api/user/:userId: Update user details (username, password)
+
+**Transaction**
+- POST /api/checkout: for checking out and creating a new transaction
+- GET /api/transactions: for fetching all transactions
+- PATCH /api/transactions/:transactionId: for updating transaction status
+- PATCH /api/transactions/cancel/:transactionId: used to cancel transactions by transaction ID
+- GET /api/sales/:duration: for fetching sales data for weekly, monthly, or annual periods
 
 ### MORE REPOSITORIES (COMMIT VIEWING)
 
