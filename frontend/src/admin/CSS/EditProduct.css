@@ -1,3 +1,5 @@
+/* CSS components start with .edit-product for specificity to edit product */
+
 .edit-product-modal {
   font-family: 'Montserrat', sans-serif;
 }
